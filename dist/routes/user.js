@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRouter = void 0;
+const express_1 = __importDefault(require("express"));
+const errorHandler_1 = require("../middleware/errorHandler");
+const updateuser_1 = require("../controlers/user/updateuser");
+const getuser_1 = require("../controlers/user/getuser");
+const authentication_1 = __importDefault(require("../middleware/authentication"));
+const requestPasswordChange_1 = __importDefault(require("../controlers/authentication/requestPasswordChange"));
+const resetPassword_1 = __importDefault(require("../controlers/authentication/resetPassword"));
+exports.userRouter = express_1.default.Router();
+exports.userRouter.get('/', (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(getuser_1.getUsers));
+exports.userRouter.get('/:id', (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(getuser_1.getUserById));
+exports.userRouter.put('/update', (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(updateuser_1.updateUser));
+exports.userRouter.delete('/delete', (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(updateuser_1.deleteUser));
+exports.userRouter.post('/request-password-change', (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(requestPasswordChange_1.default));
+exports.userRouter.post('/reset-password', (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(resetPassword_1.default));
+exports.userRouter.put("/asign-role/:id", (0, authentication_1.default)([]), (0, errorHandler_1.asyncError)(updateuser_1.asignRole));
+exports.userRouter.put("/update-status/:id", (0, authentication_1.default)(['ADMIN']), (0, errorHandler_1.asyncError)(updateuser_1.handleIsActive));

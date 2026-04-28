@@ -1,0 +1,346 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ENUMS
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+  CANCELLED
+  EXPIRED
+}
+
+enum PaymentGateway {
+  STRIPE
+  MANUAL
+}
+
+enum UserRole {
+  VIEWER
+  ADMIN
+  SUBSCRIBER
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+  FACEBOOK
+}
+
+enum CharityContributionType {
+  SUBSCRIPTION_PERCENTAGE
+  INDEPENDENT_DONATION
+}
+
+enum CharityStatus {
+  PENDING
+  PAID
+}
+
+// USER
+
+model User {
+  id       String @id @default(uuid())
+  publicId String @unique @default(uuid())
+
+  // Auth
+  email                     String       @unique
+  password                  String?
+  role                      UserRole     @default(VIEWER)
+  authProvider              AuthProvider @default(EMAIL)
+  googleId                  String?
+  resetPasswordToken        String?      @unique
+  resetPasswordTokenExpires DateTime?
+  twoFactorSecret           String?
+  twoFactorEnabled          Boolean      @default(false)
+
+  // Profile
+  profilePicture String?
+  userName       String
+  firstName      String?
+  lastName       String?
+  phoneNumber    String?
+  dateOfBirth    DateTime?
+
+  // Security
+  lastLoginAt   DateTime?
+  lastLoginIp   String?
+  loginAttempts Int       @default(0)
+  lockedUntil   DateTime?
+  isActive      Boolean   @default(true)
+
+  // Relations
+  scores        GolfScore[]
+  userCharities UserCharity[]
+  subcriptions  SubscriptionOrder[]
+
+  deletedAt    DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  draws        Draw[]
+  winners      Winner[]
+  participants Participant[]
+
+  @@index([email])
+  @@index([publicId])
+  @@index([role])
+  @@index([deletedAt])
+}
+
+// OTP
+
+model Otp {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  otp       String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email])
+}
+
+// CHARITY
+
+model Charity {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   @db.Text
+  logoUrl     String?
+  websiteUrl  String?
+  isFeatured  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  country     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  images        CharityImage[]
+  userCharities UserCharity[]
+
+  @@map("charities")
+}
+
+model CharityImage {
+  id        String   @id @default(cuid())
+  charityId String
+  url       String
+  altText   String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  charity Charity @relation(fields: [charityId], references: [id], onDelete: Cascade)
+
+  @@map("charity_images")
+}
+
+// USER CHARITY (contribution ledger + active selection)
+
+model UserCharity {
+  id             String                  @id @default(cuid())
+  userId         String
+  charityId      String
+  subscriptionId String                  @unique
+  subscription   SubscriptionOrder       @relation(fields: [subscriptionId], references: [id], onDelete: Restrict)
+  type           CharityContributionType
+  percentage     Decimal?                @db.Decimal(5, 2) // snapshot at time of payment
+  amount         Decimal                 @db.Decimal(10, 2) // actual amount contributed
+  currency       String                  @default("GBP")
+  month          Int? // for SUBSCRIPTION_PERCENTAGE entries
+  year           Int? // for SUBSCRIPTION_PERCENTAGE entries
+  status         CharityStatus           @default(PENDING)
+  paidAt         DateTime?
+  createdAt      DateTime                @default(now())
+  updatedAt      DateTime                @updatedAt
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  charity Charity @relation(fields: [charityId], references: [id])
+
+  // one subscription contribution per user per month
+  @@unique([userId, month, year, type])
+  @@index([charityId, month, year, status])
+  @@map("user_charities")
+}
+
+// GOLF SCORES
+
+model GolfScore {
+  id        String   @id @default(cuid())
+  userId    String
+  score     Int
+  playedOn  DateTime @db.Date
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, playedOn])
+  @@map("golf_scores")
+}
+
+model SubscriptionModel {
+  id                 String              @id @default(uuid())
+  planName           String
+  planDescription    String?
+  price              Int
+  currency           String
+  features           String[] // array of strings
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  subscriptionOrders SubscriptionOrder[]
+}
+
+model SubscriptionOrder {
+  id String @id @default(uuid())
+
+  // Relations
+  subscriptionModelId String
+  subscriptionModel   SubscriptionModel @relation(fields: [subscriptionModelId], references: [id], onDelete: Restrict)
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  // Billing Period
+  periodStart DateTime
+  periodEnd   DateTime
+
+  // Stripe Details
+  stripeSessionId       String? @unique
+  stripePaymentIntentId String? @unique
+  stripeCustomerId      String?
+  stripeClientSecret    String? @unique
+  stripeEventId         String? @unique // for webhook idempotency
+
+  // Payment Info
+  paymentGateway PaymentGateway @default(STRIPE) // enum > string
+  amount         Int // stored in pence/cents (smallest unit)
+  currency       String         @default("GBP") @db.Char(3) // ISO 4217
+
+  // Status Tracking
+  status      PaymentStatus @default(PENDING)
+  failReason  String? // capture decline/fail message
+  completedAt DateTime? // when payment succeeded
+  cancelledAt DateTime?
+
+  // Audit / Metadata
+  ipAddress     String? // for fraud / dispute evidence
+  userAgent     String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  userCharities UserCharity[]
+
+  // Indexes
+  @@index([userId])
+  @@index([status])
+  @@index([stripeCustomerId])
+  @@index([periodStart, periodEnd])
+  @@map("subscription_orders")
+}
+
+enum DrawStatus {
+  active
+  completed
+  cancelled
+}
+
+enum WinnerType {
+  fiveMatch
+  fourMatch
+  threeMatch
+}
+
+enum VerificationStatus {
+  pending
+  approved
+  rejected
+}
+
+enum WinnerPaymentStatus {
+  pending
+  paid
+  failed
+}
+
+model Draw {
+  id      String @id @default(uuid())
+  adminId String
+  admin   User   @relation(fields: [adminId], references: [id], onDelete: Restrict)
+
+  prizePool Int
+  currency  String @default("USD")
+
+  entryStartDate DateTime
+  lastEntryDate  DateTime
+  resultDate     DateTime
+
+  drawNumber String?    @unique
+  status     DrawStatus @default(active)
+
+  // Prize distribution — must sum to 100
+  fiveMatchPct  Int @default(40)
+  fourMatchPct  Int @default(35)
+  threeMatchPct Int @default(25)
+
+  // Jackpot rollover logic (PRD §06)
+  jackpotRolledOver Boolean @default(false)
+  rolledOverFromId  String?
+  rolledOverFrom    Draw?   @relation("JackpotRollover", fields: [rolledOverFromId], references: [id])
+  rolledOverTo      Draw[]  @relation("JackpotRollover")
+
+  winners      Winner[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  participants Participant[]
+}
+
+model Winner {
+  id String @id @default(uuid())
+
+  drawId String
+  draw   Draw   @relation(fields: [drawId], references: [id], onDelete: Restrict)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  winnerType  WinnerType
+  winnerScore String // Stableford scores snapshot
+
+  verificationStatus VerificationStatus  @default(pending)
+  paymentStatus      WinnerPaymentStatus @default(pending)
+
+  proofImage  String? // nullable until uploaded (PRD §09)
+  prizeAmount Int? // calculated after split among tier winners
+  adminNotes  String?
+
+  verifiedAt DateTime?
+  paidAt     DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Participant {
+  id String @id @default(uuid())
+
+  drawId String
+  draw   Draw   @relation(fields: [drawId], references: [id], onDelete: Restrict)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  score String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([drawId, userId]) // prevents duplicate entries
+  @@index([drawId])
+  @@index([userId])
+}

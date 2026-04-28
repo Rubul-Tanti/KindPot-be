@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const errorHandler_1 = require("../middleware/errorHandler");
+const authentication_1 = __importDefault(require("../middleware/authentication"));
+const index_1 = require("../controlers/charity/index");
+const multer_1 = require("../middleware/multer");
+const charityRouter = express_1.default.Router();
+charityRouter.get('/', (0, errorHandler_1.asyncError)(index_1.getAllCharities));
+charityRouter.get('/featured', (0, errorHandler_1.asyncError)(index_1.getFeaturedCharities));
+charityRouter.get('/:id', (0, errorHandler_1.asyncError)(index_1.getCharityById));
+charityRouter.post('/create', (0, authentication_1.default)(['ADMIN']), multer_1.uploadMiddleware.array('files'), (0, errorHandler_1.asyncError)(index_1.createCharity));
+charityRouter.put('/:id', (0, authentication_1.default)(['ADMIN']), multer_1.uploadMiddleware.array('images'), (0, errorHandler_1.asyncError)(index_1.updateCharity));
+charityRouter.delete('/:id', (0, authentication_1.default)(['ADMIN']), (0, errorHandler_1.asyncError)(index_1.deleteCharity));
+charityRouter.patch('/:id/toggle-status', (0, authentication_1.default)(['ADMIN']), (0, errorHandler_1.asyncError)(index_1.toggleCharityStatus));
+charityRouter.patch('/:id/toggle-featured', (0, authentication_1.default)(['ADMIN']), (0, errorHandler_1.asyncError)(index_1.toggleFeaturedStatus));
+exports.default = charityRouter;
