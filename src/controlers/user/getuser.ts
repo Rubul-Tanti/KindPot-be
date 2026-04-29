@@ -23,7 +23,7 @@ export const getUsers = async (req: Request, res: Response) => {
       })
     }
 
-    const { page, limit } = validationResult.data
+    const { page, limit,userName } = validationResult.data
     const skip = (page - 1) * limit
 
     // Fetch total count of users
@@ -33,7 +33,7 @@ export const getUsers = async (req: Request, res: Response) => {
 
     // Fetch users with pagination
     const users = await prisma.user.findMany({
-      where: { deletedAt: null },
+      where: {userName, deletedAt: null },
       skip,
       take: limit||10,
       select: {
