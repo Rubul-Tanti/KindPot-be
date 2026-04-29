@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { ApiError } from "../../middleware/errorHandler";
 import { uploadToCloudinary } from "../../services/uploadToCloudinary";
 import { prisma } from "../../db/prisma";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/client";
 
 export const createWinner = async (req: Request, res: Response) => {
   try {
@@ -31,7 +32,7 @@ export const createWinner = async (req: Request, res: Response) => {
         message: "Result hasn't been published yet",
       });
     }
-
+    const amount=(draw.prizePool*draw.fiveMatchPct)/100
     //  check participant
     const participant = await prisma.participant.findFirst({
       where: { userId, drawId: draw.id },
@@ -91,13 +92,15 @@ let match = 0;
     //  create winner
     const winner = await prisma.winner.create({
       data: {
+
         userId,
         drawId: draw.id,
         winnerScore: participant.score,
         winnerType,
         proofImage: upload.url ,
         paymentStatus:"pending",
-        verificationStatus:"pending"
+        verificationStatus:"pending",
+        prizeAmount:amount,
       },
     });
 
@@ -114,3 +117,36 @@ let match = 0;
     throw new ApiError("Internal server Error", 500);
   }
 };
+
+export const updateWinnerVerificationStatus=async(req:Request,res:Response)=>{
+  try{
+    const status=req.body.status
+    if(!status){
+      res.status(200).json({message:"required status"})
+    }
+    const id=req.params.id as string
+    const updatedVerificationStatus=await prisma.winner.update({where:{id},data:{verificationStatus:status,verifiedAt:new Date}})
+    res.status(200).json({message:"updated Verification successfully",data:updateWinnerVerificationStatus})
+  }catch(e){
+    if(e instanceof PrismaClientKnownRequestError&&e.code =="P2025"){
+      return res.status(404).json({message:"not found"})
+    }
+    throw new ApiError('internal server error',500)
+  }
+}
+export const updateWinnerPaymentStatus=async(req:Request,res:Response)=>{
+  try{
+    const status=req.body.status
+    if(!status){
+      res.status(200).json({message:"required status"})
+    }
+    const id=req.params.id as string
+    const updatedPaymentStatus=await prisma.winner.update({where:{id},data:{paymentStatus:status}})
+    res.status(200).json({message:"updated Verification successfully",data:updatedPaymentStatus})
+  }catch(e){
+    if(e instanceof PrismaClientKnownRequestError&&e.code =="P2025"){
+      return res.status(404).json({message:"not found"})
+    }
+    throw new ApiError('internal server error',500)
+  }
+}

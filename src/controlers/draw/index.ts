@@ -231,6 +231,7 @@ export const getActiveDrawsHandler = async (
         admin: {
           select: { id: true, email: true, userName: true },
         },
+        winners:{include:{user:{select:{userName:true,email:true}}}}
       },
       orderBy: { resultDate: "asc" },
     });

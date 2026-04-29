@@ -10,8 +10,8 @@ export const getDashboardStats = async (req: Request, res: Response) => {
       where: { deletedAt: null }
     })
 
-    const totalSubscribers = await prisma.subscriptionOrder.count({
-      where: { status: 'COMPLETED' }
+    const totalSubscribers = await prisma.user.count({
+      where: { role:'SUBSCRIBER' }
     })
 
     const totalCharities = await prisma.charity.count()
