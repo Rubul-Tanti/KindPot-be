@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { ApiError } from '../../middleware/errorHandler'
 import logger from '../../utils/logger'
 import { prisma } from '../../db/prisma'
-import { z } from 'zod'
+import { startsWith, z } from 'zod'
 
 // Validation schema for pagination query params
 const paginationSchema = z.object({
@@ -24,16 +24,21 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 
     const { page, limit,userName } = validationResult.data
+
     const skip = (page - 1) * limit
 
     // Fetch total count of users
     const totalCount = await prisma.user.count({
       where: { deletedAt: null }
     })
-
-    // Fetch users with pagination
+    function isEmail(value: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(value);
+}
+    const nameQuery=isEmail(userName)?{email:{startsWith:userName}}:{userName:{startsWith:userName}}
+// Fetch users with pagination
     const users = await prisma.user.findMany({
-      where: {userName, deletedAt: null },
+      where: {...nameQuery, deletedAt: null },
       skip,
       take: limit||10,
       select: {

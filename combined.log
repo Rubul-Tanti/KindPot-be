@@ -29063,3 +29063,342 @@
 {"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-28T20:32:55.552Z"}
 {"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-28T20:32:56.256Z"}
 {"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-28T20:32:56.430Z"}
+{"label":"server","level":"info","message":"hit refresh user","timestamp":"2026-04-29T06:28:41.445Z"}
+{"label":"server","level":"info","message":"get user Charity","timestamp":"2026-04-29T06:28:48.316Z"}
+{"label":"server","level":"info","message":"get user Charity","timestamp":"2026-04-29T06:29:09.436Z"}
+{"0":"1","1":"3","10":"1","11":"5","12":"a","13":"-","14":"4","15":"9","16":"4","17":"3","18":"-","19":"9","2":"0","20":"b","21":"5","22":"e","23":"-","24":"9","25":"4","26":"e","27":"9","28":"9","29":"f","3":"5","30":"5","31":"7","32":"1","33":"2","34":"f","35":"5","4":"4","5":"f","6":"f","7":"9","8":"-","9":"7","label":"server","level":"info","message":"login successfully","timestamp":"2026-04-29T06:29:18.674Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:29:21.614Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:29:21.651Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:29:22.581Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:29:23.252Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:29.606Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:30.244Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:38.873Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:39.502Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:40.360Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:40.473Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:40.639Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:40.746Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:40.972Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:41.119Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:41.235Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:41.380Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:43.436Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:43.910Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:43.982Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:43.984Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:29:44.049Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:44.065Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:44.501Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:44.597Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:44.628Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:29:44.686Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:30:48.159Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:30:48.854Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:30:50.804Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:30:51.858Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:30:52.057Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:30:53.065Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:30:55.199Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:30:55.777Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:01.418Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:31:02.007Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:03.617Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:31:04.223Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:04.997Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:31:05.590Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:06.543Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:06.573Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:06.592Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:06.693Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:31:07.167Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:31:07.229Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:31:07.288Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:31:07.316Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:10.197Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:31:10.826Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:31:43.233Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:31:43.895Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:32:08.907Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:32:09.576Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:09.481Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:10.106Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:13.082Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:13.683Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:14.318Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:14.495Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:14.640Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:14.895Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:14.916Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:15.106Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:15.159Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:15.197Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:15.268Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:15.531Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:15.570Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:15.739Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:15.784Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:15.825Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:15.894Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:16.133Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:16.267Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:16.346Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:16.516Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:16.964Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:16.980Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:17.268Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:17.389Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:17.560Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:17.587Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:17.760Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:17.897Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:17.899Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:17.995Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:18.171Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:18.209Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:18.445Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:18.519Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:18.534Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:18.599Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:18.798Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:18.830Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:19.165Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:19.217Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:19.428Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:33:23.242Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:33:23.858Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:36.630Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:38:37.253Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:39.005Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:38:39.662Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:42.236Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:38:42.876Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:45.014Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 1 users with pagination","page":1,"timestamp":"2026-04-29T06:38:45.652Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:55.466Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:38:56.092Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:56.920Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 1 users with pagination","page":1,"timestamp":"2026-04-29T06:38:57.555Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:38:57.678Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 1 users with pagination","page":1,"timestamp":"2026-04-29T06:38:58.279Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:00.138Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:39:00.759Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:01.990Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:39:02.610Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:07.277Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:39:07.880Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:08.005Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:08.517Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:39:08.634Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:39:09.117Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:09.579Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:09.715Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:39:10.223Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:39:10.369Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:10.797Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:10.879Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:39:11.418Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:39:11.524Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:54.744Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:55.091Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:39:55.381Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:39:55.725Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:56.381Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:39:57.010Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:39:59.874Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:00.511Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:00.556Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:01.166Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:01.844Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:02.451Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:02.484Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:03.110Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:04.552Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:05.194Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:06.511Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:06.670Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:07.150Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:07.331Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:08.122Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:08.249Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:08.401Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:08.763Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:08.884Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:09.061Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:10.120Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:10.596Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:10.626Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:10.630Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:10.684Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:10.787Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:11.228Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:11.231Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:11.260Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:11.324Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:11.666Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:11.956Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:12.076Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:12.156Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:12.318Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:12.337Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:12.614Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:12.714Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:12.800Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:12.930Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:13.024Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:13.202Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:13.263Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:13.342Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:13.455Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:13.539Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:13.677Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:13.858Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:13.895Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:13.962Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:14.097Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:14.134Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:14.347Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:14.511Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:14.541Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:14.597Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:14.744Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:14.821Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:15.000Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:15.165Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:15.179Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:15.218Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:15.384Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:15.422Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:15.679Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:15.817Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:15.820Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:16.354Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 0 users with pagination","page":1,"timestamp":"2026-04-29T06:40:16.467Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 1 users with pagination","page":1,"timestamp":"2026-04-29T06:40:16.484Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:16.760Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:16.986Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 1 users with pagination","page":1,"timestamp":"2026-04-29T06:40:17.377Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 1 users with pagination","page":1,"timestamp":"2026-04-29T06:40:17.636Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:20.776Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:21.659Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:30.692Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:31.385Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:32.169Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:32.418Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:32.420Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:32.422Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:32.823Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:40:33.007Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:33.030Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:40:33.083Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:40:37.865Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:40:38.519Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:41:09.665Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:41:10.294Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:41:17.166Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T06:41:17.973Z"}
+{"label":"server","level":"info","message":"hit refresh user","timestamp":"2026-04-29T06:50:22.688Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:50:27.760Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:50:28.660Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:50:29.041Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:50:30.025Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:50:41.412Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:50:42.036Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:51:58.980Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:51:59.899Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:52:00.069Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:52:00.928Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:53:48.504Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:53:48.538Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:53:49.377Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:53:49.424Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:53:50.458Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:53:51.037Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:55:57.878Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:55:58.740Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:55:59.136Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:56:00.067Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T06:58:57.421Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 4, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T06:58:58.350Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:58:58.640Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T06:58:59.576Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:59:00.688Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:59:01.330Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T06:59:04.984Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T06:59:05.594Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:02:06.729Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:02:07.281Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:02:16.802Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:02:17.410Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:04:56.439Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:04:57.036Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:05:54.435Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:05:55.028Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:07:50.528Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:07:51.157Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:10:13.355Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:10:13.942Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:10:34.563Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:10:35.137Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:10:46.920Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:10:47.504Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:11:02.495Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:11:03.069Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:11:43.485Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:11:44.087Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:11:59.229Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:11:59.835Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:12:07.388Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:12:08.004Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:12:14.616Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:13:13.229Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:13:13.862Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:14:12.322Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:14:12.958Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:15:07.339Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 4 users with pagination","page":1,"timestamp":"2026-04-29T07:15:07.954Z"}
+{"label":"server","level":"info","message":"hit delete user controler","timestamp":"2026-04-29T07:15:11.506Z"}
+{"label":"server","level":"info","message":"hit send account deactivated email","timestamp":"2026-04-29T07:15:11.821Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:15:33.523Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:15:34.114Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:18:22.029Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:18:22.591Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:18:26.851Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:18:27.420Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:19:02.021Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:19:02.671Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:20:06.403Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:20:06.988Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:20:46.226Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:20:46.845Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:21:20.771Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:21:21.341Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:21:41.441Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:21:42.026Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:21:49.634Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:21:50.236Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:24:15.791Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:24:16.398Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:24:31.100Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:24:31.686Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:24:55.818Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:24:56.383Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:25:23.320Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:25:23.912Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:25:55.648Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:25:56.208Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:26:11.627Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:26:12.184Z"}
+{"clientVersion":"7.7.0","code":"P2025","label":"server","level":"error","message":"error while updating user \nInvalid `prisma.user.update()` invocation in\nD:\\ASSIGMENT\\digitalheros\\backend\\src\\controlers\\user\\updateuser.ts:41:41\n\n  38     return res.status(400).json({message:\"valid role is required\"})\n  39 }\n  40 \n→ 41 const newUser=await prisma.user.update(\nAn operation failed because it depends on one or more records that were required but not found. No record was found for an update.","meta":{"modelName":"User","operation":"an update"},"name":"PrismaClientKnownRequestError","stack":"PrismaClientKnownRequestError: \nInvalid `prisma.user.update()` invocation in\nD:\\ASSIGMENT\\digitalheros\\backend\\src\\controlers\\user\\updateuser.ts:41:41\n\n  38     return res.status(400).json({message:\"valid role is required\"})\n  39 }\n  40 \n→ 41 const newUser=await prisma.user.update(\nAn operation failed because it depends on one or more records that were required but not found. No record was found for an update.\n    at Gr.handleRequestError (D:\\ASSIGMENT\\digitalheros\\backend\\src\\generated\\prisma\\runtime\\client.js:69:8286)\n    at Gr.handleAndLogRequestError (D:\\ASSIGMENT\\digitalheros\\backend\\src\\generated\\prisma\\runtime\\client.js:69:7581)\n    at Gr.request (D:\\ASSIGMENT\\digitalheros\\backend\\src\\generated\\prisma\\runtime\\client.js:69:7288)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at a (D:\\ASSIGMENT\\digitalheros\\backend\\src\\generated\\prisma\\runtime\\client.js:79:6730)\n    at asignRole (D:\\ASSIGMENT\\digitalheros\\backend\\src\\controlers\\user\\updateuser.ts:41:23)","timestamp":"2026-04-29T07:26:18.014Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:27:35.636Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:27:36.299Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:27:40.435Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:27:41.161Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:28:22.843Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:28:23.568Z"}
+{"label":"server","level":"info","message":"hit get users","timestamp":"2026-04-29T07:28:27.251Z"}
+{"label":"server","level":"info","limit":10,"message":"Fetched 3 users with pagination","page":1,"timestamp":"2026-04-29T07:28:27.796Z"}
+{"label":"server","level":"info","message":"Getting dashboard statistics","timestamp":"2026-04-29T07:28:37.032Z"}
+{"label":"server","level":"info","message":"Dashboard stats retrieved - Users: 3, Subscribers: 4, Charities: 3","timestamp":"2026-04-29T07:28:37.849Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T07:28:38.115Z"}
+{"label":"server","level":"info","message":"hit get recent users","timestamp":"2026-04-29T07:28:38.959Z"}

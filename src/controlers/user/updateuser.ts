@@ -7,6 +7,7 @@ import { UserRole } from '../../types/user'
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client'
 import { getsafeUser } from '../authentication/loginUser'
 import { boolean } from 'zod'
+import { sendAccountDeactivatedEmail } from '../../services/emailService/deactivateEmail'
 export const updateUser=async(req:Request,res:Response)=>{
 logger.info("hit update user")
     try{
@@ -37,7 +38,7 @@ export const asignRole=async(req:Request,res:Response)=>{
             return res.status(400).json({message:"valid role is required"})
         }
 
-        const newUser=await prisma.user.update({where:{publicId:userId,deletedAt:null},data:{role}})
+        const newUser=await prisma.user.update({where:{id:userId,deletedAt:null},data:{role}})
         return res.status(200).json({message:"successfully assigned role ",data:getsafeUser(newUser)})
     }catch(e){
         logger.error("error while updating user",e)
@@ -70,11 +71,12 @@ export const handleIsActive=async(req:Request,res:Response)=>{
 
 export const deleteUser=async(req:Request,res:Response)=>{
     try{logger.info('hit delete user controler')
-        const id=req.user?.id
+        const id=req.params.id as string
         if(!id){
          return   res.status(401).json({message:'not authorized'})
         }
         const deletedUser=await prisma.user.update({where:{id:req.user?.id},data:{deletedAt:new Date()}})
+        await sendAccountDeactivatedEmail(deletedUser.email)
         res.status(200).json({message:'user deleted successfully',data:getsafeUser(deletedUser)})
     }catch(e){
         logger.error("error deleting user",req.user?.id)
