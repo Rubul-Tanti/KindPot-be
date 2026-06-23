@@ -1,0 +1,1359 @@
+{
+  "info": {
+    "name": "Digital Heroes API",
+    "description": "Complete API documentation for Digital Heroes backend application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Email Verification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"otp\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/email-verification",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "email-verification"]
+            }
+          }
+        },
+        {
+          "name": "User Registration",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "User Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/refresh",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "refresh"]
+            }
+          }
+        },
+        {
+          "name": "User Logout",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "logout"]
+            }
+          }
+        },
+        {
+          "name": "Google Authentication",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"google_auth_token\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/register-with-google",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "register-with-google"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Charity",
+      "item": [
+        {
+          "name": "Get All Charities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/charity",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity"]
+            }
+          }
+        },
+        {
+          "name": "Get Featured Charities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/charity/featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", "featured"]
+            }
+          }
+        },
+        {
+          "name": "Get Charity by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/charity/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Create Charity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Charity Name"
+                },
+                {
+                  "key": "description",
+                  "value": "Charity description"
+                },
+                {
+                  "key": "files",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/charity/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", "create"]
+            }
+          }
+        },
+        {
+          "name": "Update Charity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Updated Charity Name"
+                },
+                {
+                  "key": "images",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/charity/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Delete Charity",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/charity/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Toggle Charity Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/charity/:id/toggle-status",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", ":id", "toggle-status"]
+            }
+          }
+        },
+        {
+          "name": "Toggle Featured Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/charity/:id/toggle-featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["charity", ":id", "toggle-featured"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard"]
+            }
+          }
+        },
+        {
+          "name": "Get Admin Dashboard Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/admin",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "admin"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Draw",
+      "item": [
+        {
+          "name": "Create Draw",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Draw Name\",\n  \"description\": \"Draw description\",\n  \"startDate\": \"2026-05-01T00:00:00Z\",\n  \"endDate\": \"2026-05-31T23:59:59Z\",\n  \"ticketPrice\": 10.00\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/draw",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw"]
+            }
+          }
+        },
+        {
+          "name": "Update Draw",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Draw Name\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/draw/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Publish Draw Result",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"winnerId\": \"winner_id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/draw/publish-result/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", "publish-result", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Update Draw Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/draw/:drawId/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", ":drawId", "status"]
+            }
+          }
+        },
+        {
+          "name": "Add Jackpot Rollover",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 5000.00\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/draw/:drawId/jackpot-rollover",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", ":drawId", "jackpot-rollover"]
+            }
+          }
+        },
+        {
+          "name": "Delete Draw",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/draw/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Get Draws Needing Verification",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/draw/needs-verification",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", "needs-verification"]
+            }
+          }
+        },
+        {
+          "name": "Get Draw Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/draw/statistics/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", "statistics", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Get Active Draws",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/draw/active",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", "active"]
+            }
+          }
+        },
+        {
+          "name": "Get Prize Distribution",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/draw/prize-distribution/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", "prize-distribution", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Get Draw by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/draw/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Get All Draws",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/draw",
+              "host": ["{{baseUrl}}"],
+              "path": ["draw"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Golf Score",
+      "item": [
+        {
+          "name": "Add Golf Score",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"score\": 85,\n  \"courseId\": \"course_id\",\n  \"holes\": 18\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", "add"]
+            }
+          }
+        },
+        {
+          "name": "Get Last Five Scores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/last-five",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", "last-five"]
+            }
+          }
+        },
+        {
+          "name": "Get User Golf Scores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/golf-score",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score"]
+            }
+          }
+        },
+        {
+          "name": "Get Golf Score Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/stats",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Get Golf Score by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Update Golf Score",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"score\": 88\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Delete Golf Score",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Get All Golf Scores (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/golf-score/admin/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["golf-score", "admin", "all"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Participant",
+      "item": [
+        {
+          "name": "Create Participant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"drawId\": \"draw_id\",\n  \"userId\": \"user_id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/participant",
+              "host": ["{{baseUrl}}"],
+              "path": ["participant"]
+            }
+          }
+        },
+        {
+          "name": "Get Participant by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/participant/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["participant", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Get Participants by Draw ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/participant/draw/:drawId",
+              "host": ["{{baseUrl}}"],
+              "path": ["participant", "draw", ":drawId"]
+            }
+          }
+        },
+        {
+          "name": "Update Participant Score",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"score\": 100\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/participant/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["participant", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Remove Participant from Draw",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"participantId\": \"participant_id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/participant/remove",
+              "host": ["{{baseUrl}}"],
+              "path": ["participant", "remove"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscription Model",
+      "item": [
+        {
+          "name": "Add Subscription Model",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Premium\",\n  \"price\": 9.99,\n  \"duration\": 1,\n  \"durationUnit\": \"month\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscription-model/add",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-model", "add"]
+            }
+          }
+        },
+        {
+          "name": "Get All Subscription Models",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subscription-model",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-model"]
+            }
+          }
+        },
+        {
+          "name": "Update Subscription Model",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 12.99\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscription-model/update/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-model", "update", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Delete Subscription Model",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/subscription-model/delete/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-model", "delete", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscription Order",
+      "item": [
+        {
+          "name": "Create Subscription Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"subscriptionModelId\": \"model_id\",\n  \"amount\": 9.99\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscription-order/create-subscriptionOrder",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-order", "create-subscriptionOrder"]
+            }
+          }
+        },
+        {
+          "name": "Check Payment Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"order_id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscription-order/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-order", "status"]
+            }
+          }
+        },
+        {
+          "name": "Confirm Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"order_id\",\n  \"paymentMethodId\": \"pm_id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/subscription-order/confirm-payment",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-order", "confirm-payment"]
+            }
+          }
+        },
+        {
+          "name": "Get Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/subscription-order/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["subscription-order", "orders"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["user"]
+            }
+          }
+        },
+        {
+          "name": "Get Recent Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user/recent",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "recent"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "update"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Request Password Change",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/request-password-change",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "request-password-change"]
+            }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"reset_token\",\n  \"newPassword\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/reset-password",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "reset-password"]
+            }
+          }
+        },
+        {
+          "name": "Assign Role",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"SUBSCRIBER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/asign-role/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "asign-role", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Update User Status",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user/update-status/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["user", "update-status", ":id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Charity",
+      "item": [
+        {
+          "name": "Get User Charity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/user-charity",
+              "host": ["{{baseUrl}}"],
+              "path": ["user-charity"]
+            }
+          }
+        },
+        {
+          "name": "Create User Charity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"charityId\": \"charity_id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/user-charity/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["user-charity", "create"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Winner",
+      "item": [
+        {
+          "name": "Create Winner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "drawId",
+                  "value": "draw_id"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/winner",
+              "host": ["{{baseUrl}}"],
+              "path": ["winner"]
+            }
+          }
+        },
+        {
+          "name": "Update Winner Verification Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"verified\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/winner/verification-status/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["winner", "verification-status", ":id"]
+            }
+          }
+        },
+        {
+          "name": "Update Winner Payment Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{accessToken}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"paid\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/winner/payment-status/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["winner", "payment-status", ":id"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1912,21 +1912,19 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    draws: number
+    participants: number
+    winners: number
     scores: number
     userCharities: number
-    subcriptions: number
-    draws: number
-    winners: number
-    participants: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    draws?: boolean | UserCountOutputTypeCountDrawsArgs
+    participants?: boolean | UserCountOutputTypeCountParticipantsArgs
+    winners?: boolean | UserCountOutputTypeCountWinnersArgs
     scores?: boolean | UserCountOutputTypeCountScoresArgs
     userCharities?: boolean | UserCountOutputTypeCountUserCharitiesArgs
-    subcriptions?: boolean | UserCountOutputTypeCountSubcriptionsArgs
-    draws?: boolean | UserCountOutputTypeCountDrawsArgs
-    winners?: boolean | UserCountOutputTypeCountWinnersArgs
-    participants?: boolean | UserCountOutputTypeCountParticipantsArgs
   }
 
   // Custom InputTypes
@@ -1943,29 +1941,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountScoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: GolfScoreWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountUserCharitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserCharityWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountSubcriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SubscriptionOrderWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountDrawsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DrawWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParticipantWhereInput
   }
 
   /**
@@ -1978,8 +1962,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ParticipantWhereInput
+  export type UserCountOutputTypeCountScoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GolfScoreWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUserCharitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserCharityWhereInput
   }
 
 
@@ -2055,50 +2046,19 @@ export namespace Prisma {
 
 
   /**
-   * Count Type SubscriptionOrderCountOutputType
-   */
-
-  export type SubscriptionOrderCountOutputType = {
-    userCharities: number
-  }
-
-  export type SubscriptionOrderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userCharities?: boolean | SubscriptionOrderCountOutputTypeCountUserCharitiesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * SubscriptionOrderCountOutputType without action
-   */
-  export type SubscriptionOrderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubscriptionOrderCountOutputType
-     */
-    select?: SubscriptionOrderCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * SubscriptionOrderCountOutputType without action
-   */
-  export type SubscriptionOrderCountOutputTypeCountUserCharitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserCharityWhereInput
-  }
-
-
-  /**
    * Count Type DrawCountOutputType
    */
 
   export type DrawCountOutputType = {
     rolledOverTo: number
-    winners: number
     participants: number
+    winners: number
   }
 
   export type DrawCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     rolledOverTo?: boolean | DrawCountOutputTypeCountRolledOverToArgs
-    winners?: boolean | DrawCountOutputTypeCountWinnersArgs
     participants?: boolean | DrawCountOutputTypeCountParticipantsArgs
+    winners?: boolean | DrawCountOutputTypeCountWinnersArgs
   }
 
   // Custom InputTypes
@@ -2122,15 +2082,15 @@ export namespace Prisma {
   /**
    * DrawCountOutputType without action
    */
-  export type DrawCountOutputTypeCountWinnersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WinnerWhereInput
+  export type DrawCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ParticipantWhereInput
   }
 
   /**
    * DrawCountOutputType without action
    */
-  export type DrawCountOutputTypeCountParticipantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ParticipantWhereInput
+  export type DrawCountOutputTypeCountWinnersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WinnerWhereInput
   }
 
 
@@ -2496,12 +2456,12 @@ export namespace Prisma {
     deletedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    scores?: boolean | User$scoresArgs<ExtArgs>
-    userCharities?: boolean | User$userCharitiesArgs<ExtArgs>
-    subcriptions?: boolean | User$subcriptionsArgs<ExtArgs>
     draws?: boolean | User$drawsArgs<ExtArgs>
-    winners?: boolean | User$winnersArgs<ExtArgs>
     participants?: boolean | User$participantsArgs<ExtArgs>
+    winners?: boolean | User$winnersArgs<ExtArgs>
+    scores?: boolean | User$scoresArgs<ExtArgs>
+    subcriptions?: boolean | User$subcriptionsArgs<ExtArgs>
+    userCharities?: boolean | User$userCharitiesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2591,12 +2551,12 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicId" | "email" | "password" | "role" | "authProvider" | "googleId" | "resetPasswordToken" | "resetPasswordTokenExpires" | "twoFactorSecret" | "twoFactorEnabled" | "profilePicture" | "userName" | "firstName" | "lastName" | "phoneNumber" | "dateOfBirth" | "lastLoginAt" | "lastLoginIp" | "loginAttempts" | "lockedUntil" | "isActive" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    scores?: boolean | User$scoresArgs<ExtArgs>
-    userCharities?: boolean | User$userCharitiesArgs<ExtArgs>
-    subcriptions?: boolean | User$subcriptionsArgs<ExtArgs>
     draws?: boolean | User$drawsArgs<ExtArgs>
-    winners?: boolean | User$winnersArgs<ExtArgs>
     participants?: boolean | User$participantsArgs<ExtArgs>
+    winners?: boolean | User$winnersArgs<ExtArgs>
+    scores?: boolean | User$scoresArgs<ExtArgs>
+    subcriptions?: boolean | User$subcriptionsArgs<ExtArgs>
+    userCharities?: boolean | User$userCharitiesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2605,12 +2565,12 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      scores: Prisma.$GolfScorePayload<ExtArgs>[]
-      userCharities: Prisma.$UserCharityPayload<ExtArgs>[]
-      subcriptions: Prisma.$SubscriptionOrderPayload<ExtArgs>[]
       draws: Prisma.$DrawPayload<ExtArgs>[]
-      winners: Prisma.$WinnerPayload<ExtArgs>[]
       participants: Prisma.$ParticipantPayload<ExtArgs>[]
+      winners: Prisma.$WinnerPayload<ExtArgs>[]
+      scores: Prisma.$GolfScorePayload<ExtArgs>[]
+      subcriptions: Prisma.$SubscriptionOrderPayload<ExtArgs> | null
+      userCharities: Prisma.$UserCharityPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3032,12 +2992,12 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    scores<T extends User$scoresArgs<ExtArgs> = {}>(args?: Subset<T, User$scoresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GolfScorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    userCharities<T extends User$userCharitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$userCharitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCharityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    subcriptions<T extends User$subcriptionsArgs<ExtArgs> = {}>(args?: Subset<T, User$subcriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionOrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     draws<T extends User$drawsArgs<ExtArgs> = {}>(args?: Subset<T, User$drawsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrawPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    winners<T extends User$winnersArgs<ExtArgs> = {}>(args?: Subset<T, User$winnersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WinnerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     participants<T extends User$participantsArgs<ExtArgs> = {}>(args?: Subset<T, User$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    winners<T extends User$winnersArgs<ExtArgs> = {}>(args?: Subset<T, User$winnersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WinnerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    scores<T extends User$scoresArgs<ExtArgs> = {}>(args?: Subset<T, User$scoresArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GolfScorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    subcriptions<T extends User$subcriptionsArgs<ExtArgs> = {}>(args?: Subset<T, User$subcriptionsArgs<ExtArgs>>): Prisma__SubscriptionOrderClient<$Result.GetResult<Prisma.$SubscriptionOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    userCharities<T extends User$userCharitiesArgs<ExtArgs> = {}>(args?: Subset<T, User$userCharitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCharityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3485,78 +3445,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.scores
-   */
-  export type User$scoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the GolfScore
-     */
-    select?: GolfScoreSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the GolfScore
-     */
-    omit?: GolfScoreOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: GolfScoreInclude<ExtArgs> | null
-    where?: GolfScoreWhereInput
-    orderBy?: GolfScoreOrderByWithRelationInput | GolfScoreOrderByWithRelationInput[]
-    cursor?: GolfScoreWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: GolfScoreScalarFieldEnum | GolfScoreScalarFieldEnum[]
-  }
-
-  /**
-   * User.userCharities
-   */
-  export type User$userCharitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserCharity
-     */
-    select?: UserCharitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the UserCharity
-     */
-    omit?: UserCharityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserCharityInclude<ExtArgs> | null
-    where?: UserCharityWhereInput
-    orderBy?: UserCharityOrderByWithRelationInput | UserCharityOrderByWithRelationInput[]
-    cursor?: UserCharityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserCharityScalarFieldEnum | UserCharityScalarFieldEnum[]
-  }
-
-  /**
-   * User.subcriptions
-   */
-  export type User$subcriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SubscriptionOrder
-     */
-    select?: SubscriptionOrderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the SubscriptionOrder
-     */
-    omit?: SubscriptionOrderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SubscriptionOrderInclude<ExtArgs> | null
-    where?: SubscriptionOrderWhereInput
-    orderBy?: SubscriptionOrderOrderByWithRelationInput | SubscriptionOrderOrderByWithRelationInput[]
-    cursor?: SubscriptionOrderWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SubscriptionOrderScalarFieldEnum | SubscriptionOrderScalarFieldEnum[]
-  }
-
-  /**
    * User.draws
    */
   export type User$drawsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3578,6 +3466,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DrawScalarFieldEnum | DrawScalarFieldEnum[]
+  }
+
+  /**
+   * User.participants
+   */
+  export type User$participantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Participant
+     */
+    select?: ParticipantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Participant
+     */
+    omit?: ParticipantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ParticipantInclude<ExtArgs> | null
+    where?: ParticipantWhereInput
+    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
+    cursor?: ParticipantWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
   }
 
   /**
@@ -3605,27 +3517,70 @@ export namespace Prisma {
   }
 
   /**
-   * User.participants
+   * User.scores
    */
-  export type User$participantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$scoresArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Participant
+     * Select specific fields to fetch from the GolfScore
      */
-    select?: ParticipantSelect<ExtArgs> | null
+    select?: GolfScoreSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Participant
+     * Omit specific fields from the GolfScore
      */
-    omit?: ParticipantOmit<ExtArgs> | null
+    omit?: GolfScoreOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParticipantInclude<ExtArgs> | null
-    where?: ParticipantWhereInput
-    orderBy?: ParticipantOrderByWithRelationInput | ParticipantOrderByWithRelationInput[]
-    cursor?: ParticipantWhereUniqueInput
+    include?: GolfScoreInclude<ExtArgs> | null
+    where?: GolfScoreWhereInput
+    orderBy?: GolfScoreOrderByWithRelationInput | GolfScoreOrderByWithRelationInput[]
+    cursor?: GolfScoreWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
+    distinct?: GolfScoreScalarFieldEnum | GolfScoreScalarFieldEnum[]
+  }
+
+  /**
+   * User.subcriptions
+   */
+  export type User$subcriptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubscriptionOrder
+     */
+    select?: SubscriptionOrderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubscriptionOrder
+     */
+    omit?: SubscriptionOrderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubscriptionOrderInclude<ExtArgs> | null
+    where?: SubscriptionOrderWhereInput
+  }
+
+  /**
+   * User.userCharities
+   */
+  export type User$userCharitiesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCharity
+     */
+    select?: UserCharitySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserCharity
+     */
+    omit?: UserCharityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserCharityInclude<ExtArgs> | null
+    where?: UserCharityWhereInput
+    orderBy?: UserCharityOrderByWithRelationInput | UserCharityOrderByWithRelationInput[]
+    cursor?: UserCharityWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserCharityScalarFieldEnum | UserCharityScalarFieldEnum[]
   }
 
   /**
@@ -7220,9 +7175,9 @@ export namespace Prisma {
     paidAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    charity?: boolean | CharityDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionOrderDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    charity?: boolean | CharityDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userCharity"]>
 
   export type UserCharitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7240,9 +7195,9 @@ export namespace Prisma {
     paidAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    charity?: boolean | CharityDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionOrderDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    charity?: boolean | CharityDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userCharity"]>
 
   export type UserCharitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -7260,9 +7215,9 @@ export namespace Prisma {
     paidAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    charity?: boolean | CharityDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionOrderDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    charity?: boolean | CharityDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userCharity"]>
 
   export type UserCharitySelectScalar = {
@@ -7284,27 +7239,27 @@ export namespace Prisma {
 
   export type UserCharityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "charityId" | "subscriptionId" | "type" | "percentage" | "amount" | "currency" | "month" | "year" | "status" | "paidAt" | "createdAt" | "updatedAt", ExtArgs["result"]["userCharity"]>
   export type UserCharityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    charity?: boolean | CharityDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionOrderDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    charity?: boolean | CharityDefaultArgs<ExtArgs>
   }
   export type UserCharityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    charity?: boolean | CharityDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionOrderDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    charity?: boolean | CharityDefaultArgs<ExtArgs>
   }
   export type UserCharityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    charity?: boolean | CharityDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionOrderDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    charity?: boolean | CharityDefaultArgs<ExtArgs>
   }
 
   export type $UserCharityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "UserCharity"
     objects: {
+      charity: Prisma.$CharityPayload<ExtArgs>
       subscription: Prisma.$SubscriptionOrderPayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
-      charity: Prisma.$CharityPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7715,9 +7670,9 @@ export namespace Prisma {
    */
   export interface Prisma__UserCharityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    charity<T extends CharityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CharityDefaultArgs<ExtArgs>>): Prisma__CharityClient<$Result.GetResult<Prisma.$CharityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     subscription<T extends SubscriptionOrderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubscriptionOrderDefaultArgs<ExtArgs>>): Prisma__SubscriptionOrderClient<$Result.GetResult<Prisma.$SubscriptionOrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    charity<T extends CharityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CharityDefaultArgs<ExtArgs>>): Prisma__CharityClient<$Result.GetResult<Prisma.$CharityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10763,7 +10718,6 @@ export namespace Prisma {
     subscriptionModel?: boolean | SubscriptionModelDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     userCharities?: boolean | SubscriptionOrder$userCharitiesArgs<ExtArgs>
-    _count?: boolean | SubscriptionOrderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subscriptionOrder"]>
 
   export type SubscriptionOrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10847,7 +10801,6 @@ export namespace Prisma {
     subscriptionModel?: boolean | SubscriptionModelDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     userCharities?: boolean | SubscriptionOrder$userCharitiesArgs<ExtArgs>
-    _count?: boolean | SubscriptionOrderCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SubscriptionOrderIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     subscriptionModel?: boolean | SubscriptionModelDefaultArgs<ExtArgs>
@@ -10863,7 +10816,7 @@ export namespace Prisma {
     objects: {
       subscriptionModel: Prisma.$SubscriptionModelPayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
-      userCharities: Prisma.$UserCharityPayload<ExtArgs>[]
+      userCharities: Prisma.$UserCharityPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -11283,7 +11236,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     subscriptionModel<T extends SubscriptionModelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubscriptionModelDefaultArgs<ExtArgs>>): Prisma__SubscriptionModelClient<$Result.GetResult<Prisma.$SubscriptionModelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    userCharities<T extends SubscriptionOrder$userCharitiesArgs<ExtArgs> = {}>(args?: Subset<T, SubscriptionOrder$userCharitiesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCharityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userCharities<T extends SubscriptionOrder$userCharitiesArgs<ExtArgs> = {}>(args?: Subset<T, SubscriptionOrder$userCharitiesArgs<ExtArgs>>): Prisma__UserCharityClient<$Result.GetResult<Prisma.$UserCharityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11751,11 +11704,6 @@ export namespace Prisma {
      */
     include?: UserCharityInclude<ExtArgs> | null
     where?: UserCharityWhereInput
-    orderBy?: UserCharityOrderByWithRelationInput | UserCharityOrderByWithRelationInput[]
-    cursor?: UserCharityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: UserCharityScalarFieldEnum | UserCharityScalarFieldEnum[]
   }
 
   /**
@@ -12078,8 +12026,8 @@ export namespace Prisma {
     admin?: boolean | UserDefaultArgs<ExtArgs>
     rolledOverFrom?: boolean | Draw$rolledOverFromArgs<ExtArgs>
     rolledOverTo?: boolean | Draw$rolledOverToArgs<ExtArgs>
-    winners?: boolean | Draw$winnersArgs<ExtArgs>
     participants?: boolean | Draw$participantsArgs<ExtArgs>
+    winners?: boolean | Draw$winnersArgs<ExtArgs>
     _count?: boolean | DrawCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["draw"]>
 
@@ -12149,8 +12097,8 @@ export namespace Prisma {
     admin?: boolean | UserDefaultArgs<ExtArgs>
     rolledOverFrom?: boolean | Draw$rolledOverFromArgs<ExtArgs>
     rolledOverTo?: boolean | Draw$rolledOverToArgs<ExtArgs>
-    winners?: boolean | Draw$winnersArgs<ExtArgs>
     participants?: boolean | Draw$participantsArgs<ExtArgs>
+    winners?: boolean | Draw$winnersArgs<ExtArgs>
     _count?: boolean | DrawCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DrawIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12168,8 +12116,8 @@ export namespace Prisma {
       admin: Prisma.$UserPayload<ExtArgs>
       rolledOverFrom: Prisma.$DrawPayload<ExtArgs> | null
       rolledOverTo: Prisma.$DrawPayload<ExtArgs>[]
-      winners: Prisma.$WinnerPayload<ExtArgs>[]
       participants: Prisma.$ParticipantPayload<ExtArgs>[]
+      winners: Prisma.$WinnerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12585,8 +12533,8 @@ export namespace Prisma {
     admin<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     rolledOverFrom<T extends Draw$rolledOverFromArgs<ExtArgs> = {}>(args?: Subset<T, Draw$rolledOverFromArgs<ExtArgs>>): Prisma__DrawClient<$Result.GetResult<Prisma.$DrawPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     rolledOverTo<T extends Draw$rolledOverToArgs<ExtArgs> = {}>(args?: Subset<T, Draw$rolledOverToArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DrawPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    winners<T extends Draw$winnersArgs<ExtArgs> = {}>(args?: Subset<T, Draw$winnersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WinnerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     participants<T extends Draw$participantsArgs<ExtArgs> = {}>(args?: Subset<T, Draw$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    winners<T extends Draw$winnersArgs<ExtArgs> = {}>(args?: Subset<T, Draw$winnersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WinnerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13076,30 +13024,6 @@ export namespace Prisma {
   }
 
   /**
-   * Draw.winners
-   */
-  export type Draw$winnersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Winner
-     */
-    select?: WinnerSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Winner
-     */
-    omit?: WinnerOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: WinnerInclude<ExtArgs> | null
-    where?: WinnerWhereInput
-    orderBy?: WinnerOrderByWithRelationInput | WinnerOrderByWithRelationInput[]
-    cursor?: WinnerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: WinnerScalarFieldEnum | WinnerScalarFieldEnum[]
-  }
-
-  /**
    * Draw.participants
    */
   export type Draw$participantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13121,6 +13045,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ParticipantScalarFieldEnum | ParticipantScalarFieldEnum[]
+  }
+
+  /**
+   * Draw.winners
+   */
+  export type Draw$winnersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Winner
+     */
+    select?: WinnerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Winner
+     */
+    omit?: WinnerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WinnerInclude<ExtArgs> | null
+    where?: WinnerWhereInput
+    orderBy?: WinnerOrderByWithRelationInput | WinnerOrderByWithRelationInput[]
+    cursor?: WinnerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WinnerScalarFieldEnum | WinnerScalarFieldEnum[]
   }
 
   /**
@@ -15938,12 +15886,12 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    scores?: GolfScoreListRelationFilter
-    userCharities?: UserCharityListRelationFilter
-    subcriptions?: SubscriptionOrderListRelationFilter
     draws?: DrawListRelationFilter
-    winners?: WinnerListRelationFilter
     participants?: ParticipantListRelationFilter
+    winners?: WinnerListRelationFilter
+    scores?: GolfScoreListRelationFilter
+    subcriptions?: XOR<SubscriptionOrderNullableScalarRelationFilter, SubscriptionOrderWhereInput> | null
+    userCharities?: UserCharityListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -15972,12 +15920,12 @@ export namespace Prisma {
     deletedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    scores?: GolfScoreOrderByRelationAggregateInput
-    userCharities?: UserCharityOrderByRelationAggregateInput
-    subcriptions?: SubscriptionOrderOrderByRelationAggregateInput
     draws?: DrawOrderByRelationAggregateInput
-    winners?: WinnerOrderByRelationAggregateInput
     participants?: ParticipantOrderByRelationAggregateInput
+    winners?: WinnerOrderByRelationAggregateInput
+    scores?: GolfScoreOrderByRelationAggregateInput
+    subcriptions?: SubscriptionOrderOrderByWithRelationInput
+    userCharities?: UserCharityOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -16009,12 +15957,12 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    scores?: GolfScoreListRelationFilter
-    userCharities?: UserCharityListRelationFilter
-    subcriptions?: SubscriptionOrderListRelationFilter
     draws?: DrawListRelationFilter
-    winners?: WinnerListRelationFilter
     participants?: ParticipantListRelationFilter
+    winners?: WinnerListRelationFilter
+    scores?: GolfScoreListRelationFilter
+    subcriptions?: XOR<SubscriptionOrderNullableScalarRelationFilter, SubscriptionOrderWhereInput> | null
+    userCharities?: UserCharityListRelationFilter
   }, "id" | "publicId" | "email" | "resetPasswordToken">
 
   export type UserOrderByWithAggregationInput = {
@@ -16301,9 +16249,9 @@ export namespace Prisma {
     paidAt?: DateTimeNullableFilter<"UserCharity"> | Date | string | null
     createdAt?: DateTimeFilter<"UserCharity"> | Date | string
     updatedAt?: DateTimeFilter<"UserCharity"> | Date | string
+    charity?: XOR<CharityScalarRelationFilter, CharityWhereInput>
     subscription?: XOR<SubscriptionOrderScalarRelationFilter, SubscriptionOrderWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    charity?: XOR<CharityScalarRelationFilter, CharityWhereInput>
   }
 
   export type UserCharityOrderByWithRelationInput = {
@@ -16321,9 +16269,9 @@ export namespace Prisma {
     paidAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    charity?: CharityOrderByWithRelationInput
     subscription?: SubscriptionOrderOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
-    charity?: CharityOrderByWithRelationInput
   }
 
   export type UserCharityWhereUniqueInput = Prisma.AtLeast<{
@@ -16345,9 +16293,9 @@ export namespace Prisma {
     paidAt?: DateTimeNullableFilter<"UserCharity"> | Date | string | null
     createdAt?: DateTimeFilter<"UserCharity"> | Date | string
     updatedAt?: DateTimeFilter<"UserCharity"> | Date | string
+    charity?: XOR<CharityScalarRelationFilter, CharityWhereInput>
     subscription?: XOR<SubscriptionOrderScalarRelationFilter, SubscriptionOrderWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    charity?: XOR<CharityScalarRelationFilter, CharityWhereInput>
   }, "id" | "subscriptionId" | "userId_month_year_type">
 
   export type UserCharityOrderByWithAggregationInput = {
@@ -16554,7 +16502,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"SubscriptionOrder"> | Date | string
     subscriptionModel?: XOR<SubscriptionModelScalarRelationFilter, SubscriptionModelWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    userCharities?: UserCharityListRelationFilter
+    userCharities?: XOR<UserCharityNullableScalarRelationFilter, UserCharityWhereInput> | null
   }
 
   export type SubscriptionOrderOrderByWithRelationInput = {
@@ -16581,7 +16529,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     subscriptionModel?: SubscriptionModelOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
-    userCharities?: UserCharityOrderByRelationAggregateInput
+    userCharities?: UserCharityOrderByWithRelationInput
   }
 
   export type SubscriptionOrderWhereUniqueInput = Prisma.AtLeast<{
@@ -16611,7 +16559,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"SubscriptionOrder"> | Date | string
     subscriptionModel?: XOR<SubscriptionModelScalarRelationFilter, SubscriptionModelWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    userCharities?: UserCharityListRelationFilter
+    userCharities?: XOR<UserCharityNullableScalarRelationFilter, UserCharityWhereInput> | null
   }, "id" | "userId" | "stripeSessionId" | "stripePaymentIntentId" | "stripeClientSecret" | "stripeEventId">
 
   export type SubscriptionOrderOrderByWithAggregationInput = {
@@ -16693,8 +16641,8 @@ export namespace Prisma {
     admin?: XOR<UserScalarRelationFilter, UserWhereInput>
     rolledOverFrom?: XOR<DrawNullableScalarRelationFilter, DrawWhereInput> | null
     rolledOverTo?: DrawListRelationFilter
-    winners?: WinnerListRelationFilter
     participants?: ParticipantListRelationFilter
+    winners?: WinnerListRelationFilter
   }
 
   export type DrawOrderByWithRelationInput = {
@@ -16717,8 +16665,8 @@ export namespace Prisma {
     admin?: UserOrderByWithRelationInput
     rolledOverFrom?: DrawOrderByWithRelationInput
     rolledOverTo?: DrawOrderByRelationAggregateInput
-    winners?: WinnerOrderByRelationAggregateInput
     participants?: ParticipantOrderByRelationAggregateInput
+    winners?: WinnerOrderByRelationAggregateInput
   }
 
   export type DrawWhereUniqueInput = Prisma.AtLeast<{
@@ -16744,8 +16692,8 @@ export namespace Prisma {
     admin?: XOR<UserScalarRelationFilter, UserWhereInput>
     rolledOverFrom?: XOR<DrawNullableScalarRelationFilter, DrawWhereInput> | null
     rolledOverTo?: DrawListRelationFilter
-    winners?: WinnerListRelationFilter
     participants?: ParticipantListRelationFilter
+    winners?: WinnerListRelationFilter
   }, "id" | "drawNumber">
 
   export type DrawOrderByWithAggregationInput = {
@@ -16989,12 +16937,12 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderCreateNestedManyWithoutUserInput
     draws?: DrawCreateNestedManyWithoutAdminInput
-    winners?: WinnerCreateNestedManyWithoutUserInput
     participants?: ParticipantCreateNestedManyWithoutUserInput
+    winners?: WinnerCreateNestedManyWithoutUserInput
+    scores?: GolfScoreCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -17023,12 +16971,12 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput
     draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
+    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -17057,12 +17005,12 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUpdateManyWithoutUserNestedInput
     draws?: DrawUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUpdateManyWithoutUserNestedInput
     participants?: ParticipantUpdateManyWithoutUserNestedInput
+    winners?: WinnerUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -17091,12 +17039,12 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput
     draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -17419,9 +17367,9 @@ export namespace Prisma {
     paidAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    charity: CharityCreateNestedOneWithoutUserCharitiesInput
     subscription: SubscriptionOrderCreateNestedOneWithoutUserCharitiesInput
     user: UserCreateNestedOneWithoutUserCharitiesInput
-    charity: CharityCreateNestedOneWithoutUserCharitiesInput
   }
 
   export type UserCharityUncheckedCreateInput = {
@@ -17453,9 +17401,9 @@ export namespace Prisma {
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    charity?: CharityUpdateOneRequiredWithoutUserCharitiesNestedInput
     subscription?: SubscriptionOrderUpdateOneRequiredWithoutUserCharitiesNestedInput
     user?: UserUpdateOneRequiredWithoutUserCharitiesNestedInput
-    charity?: CharityUpdateOneRequiredWithoutUserCharitiesNestedInput
   }
 
   export type UserCharityUncheckedUpdateInput = {
@@ -17688,7 +17636,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionModel: SubscriptionModelCreateNestedOneWithoutSubscriptionOrdersInput
     user: UserCreateNestedOneWithoutSubcriptionsInput
-    userCharities?: UserCharityCreateNestedManyWithoutSubscriptionInput
+    userCharities?: UserCharityCreateNestedOneWithoutSubscriptionInput
   }
 
   export type SubscriptionOrderUncheckedCreateInput = {
@@ -17713,7 +17661,7 @@ export namespace Prisma {
     userAgent?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutSubscriptionInput
+    userCharities?: UserCharityUncheckedCreateNestedOneWithoutSubscriptionInput
   }
 
   export type SubscriptionOrderUpdateInput = {
@@ -17738,7 +17686,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionModel?: SubscriptionModelUpdateOneRequiredWithoutSubscriptionOrdersNestedInput
     user?: UserUpdateOneRequiredWithoutSubcriptionsNestedInput
-    userCharities?: UserCharityUpdateManyWithoutSubscriptionNestedInput
+    userCharities?: UserCharityUpdateOneWithoutSubscriptionNestedInput
   }
 
   export type SubscriptionOrderUncheckedUpdateInput = {
@@ -17763,7 +17711,7 @@ export namespace Prisma {
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCharities?: UserCharityUncheckedUpdateManyWithoutSubscriptionNestedInput
+    userCharities?: UserCharityUncheckedUpdateOneWithoutSubscriptionNestedInput
   }
 
   export type SubscriptionOrderCreateManyInput = {
@@ -17854,8 +17802,8 @@ export namespace Prisma {
     admin: UserCreateNestedOneWithoutDrawsInput
     rolledOverFrom?: DrawCreateNestedOneWithoutRolledOverToInput
     rolledOverTo?: DrawCreateNestedManyWithoutRolledOverFromInput
-    winners?: WinnerCreateNestedManyWithoutDrawInput
     participants?: ParticipantCreateNestedManyWithoutDrawInput
+    winners?: WinnerCreateNestedManyWithoutDrawInput
   }
 
   export type DrawUncheckedCreateInput = {
@@ -17876,8 +17824,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolledOverTo?: DrawUncheckedCreateNestedManyWithoutRolledOverFromInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutDrawInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
   }
 
   export type DrawUpdateInput = {
@@ -17898,8 +17846,8 @@ export namespace Prisma {
     admin?: UserUpdateOneRequiredWithoutDrawsNestedInput
     rolledOverFrom?: DrawUpdateOneWithoutRolledOverToNestedInput
     rolledOverTo?: DrawUpdateManyWithoutRolledOverFromNestedInput
-    winners?: WinnerUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUncheckedUpdateInput = {
@@ -17920,8 +17868,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolledOverTo?: DrawUncheckedUpdateManyWithoutRolledOverFromNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawCreateManyInput = {
@@ -18239,34 +18187,10 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type GolfScoreListRelationFilter = {
-    every?: GolfScoreWhereInput
-    some?: GolfScoreWhereInput
-    none?: GolfScoreWhereInput
-  }
-
-  export type UserCharityListRelationFilter = {
-    every?: UserCharityWhereInput
-    some?: UserCharityWhereInput
-    none?: UserCharityWhereInput
-  }
-
-  export type SubscriptionOrderListRelationFilter = {
-    every?: SubscriptionOrderWhereInput
-    some?: SubscriptionOrderWhereInput
-    none?: SubscriptionOrderWhereInput
-  }
-
   export type DrawListRelationFilter = {
     every?: DrawWhereInput
     some?: DrawWhereInput
     none?: DrawWhereInput
-  }
-
-  export type WinnerListRelationFilter = {
-    every?: WinnerWhereInput
-    some?: WinnerWhereInput
-    none?: WinnerWhereInput
   }
 
   export type ParticipantListRelationFilter = {
@@ -18275,24 +18199,39 @@ export namespace Prisma {
     none?: ParticipantWhereInput
   }
 
+  export type WinnerListRelationFilter = {
+    every?: WinnerWhereInput
+    some?: WinnerWhereInput
+    none?: WinnerWhereInput
+  }
+
+  export type GolfScoreListRelationFilter = {
+    every?: GolfScoreWhereInput
+    some?: GolfScoreWhereInput
+    none?: GolfScoreWhereInput
+  }
+
+  export type SubscriptionOrderNullableScalarRelationFilter = {
+    is?: SubscriptionOrderWhereInput | null
+    isNot?: SubscriptionOrderWhereInput | null
+  }
+
+  export type UserCharityListRelationFilter = {
+    every?: UserCharityWhereInput
+    some?: UserCharityWhereInput
+    none?: UserCharityWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
-  export type GolfScoreOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type UserCharityOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type SubscriptionOrderOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type DrawOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ParticipantOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18300,7 +18239,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ParticipantOrderByRelationAggregateInput = {
+  export type GolfScoreOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserCharityOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -18865,6 +18808,16 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type SubscriptionOrderListRelationFilter = {
+    every?: SubscriptionOrderWhereInput
+    some?: SubscriptionOrderWhereInput
+    none?: SubscriptionOrderWhereInput
+  }
+
+  export type SubscriptionOrderOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type SubscriptionModelCountOrderByAggregateInput = {
     id?: SortOrder
     planName?: SortOrder
@@ -18921,6 +18874,11 @@ export namespace Prisma {
   export type SubscriptionModelScalarRelationFilter = {
     is?: SubscriptionModelWhereInput
     isNot?: SubscriptionModelWhereInput
+  }
+
+  export type UserCharityNullableScalarRelationFilter = {
+    is?: UserCharityWhereInput | null
+    isNot?: UserCharityWhereInput | null
   }
 
   export type SubscriptionOrderCountOrderByAggregateInput = {
@@ -19263,39 +19221,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type GolfScoreCreateNestedManyWithoutUserInput = {
-    create?: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput> | GolfScoreCreateWithoutUserInput[] | GolfScoreUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: GolfScoreCreateOrConnectWithoutUserInput | GolfScoreCreateOrConnectWithoutUserInput[]
-    createMany?: GolfScoreCreateManyUserInputEnvelope
-    connect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
-  }
-
-  export type UserCharityCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput> | UserCharityCreateWithoutUserInput[] | UserCharityUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserCharityCreateOrConnectWithoutUserInput | UserCharityCreateOrConnectWithoutUserInput[]
-    createMany?: UserCharityCreateManyUserInputEnvelope
-    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-  }
-
-  export type SubscriptionOrderCreateNestedManyWithoutUserInput = {
-    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput> | SubscriptionOrderCreateWithoutUserInput[] | SubscriptionOrderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput | SubscriptionOrderCreateOrConnectWithoutUserInput[]
-    createMany?: SubscriptionOrderCreateManyUserInputEnvelope
-    connect?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-  }
-
   export type DrawCreateNestedManyWithoutAdminInput = {
     create?: XOR<DrawCreateWithoutAdminInput, DrawUncheckedCreateWithoutAdminInput> | DrawCreateWithoutAdminInput[] | DrawUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: DrawCreateOrConnectWithoutAdminInput | DrawCreateOrConnectWithoutAdminInput[]
     createMany?: DrawCreateManyAdminInputEnvelope
     connect?: DrawWhereUniqueInput | DrawWhereUniqueInput[]
-  }
-
-  export type WinnerCreateNestedManyWithoutUserInput = {
-    create?: XOR<WinnerCreateWithoutUserInput, WinnerUncheckedCreateWithoutUserInput> | WinnerCreateWithoutUserInput[] | WinnerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: WinnerCreateOrConnectWithoutUserInput | WinnerCreateOrConnectWithoutUserInput[]
-    createMany?: WinnerCreateManyUserInputEnvelope
-    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
   }
 
   export type ParticipantCreateNestedManyWithoutUserInput = {
@@ -19305,25 +19235,31 @@ export namespace Prisma {
     connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
   }
 
-  export type GolfScoreUncheckedCreateNestedManyWithoutUserInput = {
+  export type WinnerCreateNestedManyWithoutUserInput = {
+    create?: XOR<WinnerCreateWithoutUserInput, WinnerUncheckedCreateWithoutUserInput> | WinnerCreateWithoutUserInput[] | WinnerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WinnerCreateOrConnectWithoutUserInput | WinnerCreateOrConnectWithoutUserInput[]
+    createMany?: WinnerCreateManyUserInputEnvelope
+    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+  }
+
+  export type GolfScoreCreateNestedManyWithoutUserInput = {
     create?: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput> | GolfScoreCreateWithoutUserInput[] | GolfScoreUncheckedCreateWithoutUserInput[]
     connectOrCreate?: GolfScoreCreateOrConnectWithoutUserInput | GolfScoreCreateOrConnectWithoutUserInput[]
     createMany?: GolfScoreCreateManyUserInputEnvelope
     connect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
   }
 
-  export type UserCharityUncheckedCreateNestedManyWithoutUserInput = {
+  export type SubscriptionOrderCreateNestedOneWithoutUserInput = {
+    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput
+    connect?: SubscriptionOrderWhereUniqueInput
+  }
+
+  export type UserCharityCreateNestedManyWithoutUserInput = {
     create?: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput> | UserCharityCreateWithoutUserInput[] | UserCharityUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserCharityCreateOrConnectWithoutUserInput | UserCharityCreateOrConnectWithoutUserInput[]
     createMany?: UserCharityCreateManyUserInputEnvelope
     connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-  }
-
-  export type SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput> | SubscriptionOrderCreateWithoutUserInput[] | SubscriptionOrderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput | SubscriptionOrderCreateOrConnectWithoutUserInput[]
-    createMany?: SubscriptionOrderCreateManyUserInputEnvelope
-    connect?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
   }
 
   export type DrawUncheckedCreateNestedManyWithoutAdminInput = {
@@ -19333,6 +19269,13 @@ export namespace Prisma {
     connect?: DrawWhereUniqueInput | DrawWhereUniqueInput[]
   }
 
+  export type ParticipantUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
+    createMany?: ParticipantCreateManyUserInputEnvelope
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  }
+
   export type WinnerUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<WinnerCreateWithoutUserInput, WinnerUncheckedCreateWithoutUserInput> | WinnerCreateWithoutUserInput[] | WinnerUncheckedCreateWithoutUserInput[]
     connectOrCreate?: WinnerCreateOrConnectWithoutUserInput | WinnerCreateOrConnectWithoutUserInput[]
@@ -19340,11 +19283,24 @@ export namespace Prisma {
     connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
   }
 
-  export type ParticipantUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
-    createMany?: ParticipantCreateManyUserInputEnvelope
-    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  export type GolfScoreUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput> | GolfScoreCreateWithoutUserInput[] | GolfScoreUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GolfScoreCreateOrConnectWithoutUserInput | GolfScoreCreateOrConnectWithoutUserInput[]
+    createMany?: GolfScoreCreateManyUserInputEnvelope
+    connect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
+  }
+
+  export type SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput
+    connect?: SubscriptionOrderWhereUniqueInput
+  }
+
+  export type UserCharityUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput> | UserCharityCreateWithoutUserInput[] | UserCharityUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserCharityCreateOrConnectWithoutUserInput | UserCharityCreateOrConnectWithoutUserInput[]
+    createMany?: UserCharityCreateManyUserInputEnvelope
+    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -19383,48 +19339,6 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type GolfScoreUpdateManyWithoutUserNestedInput = {
-    create?: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput> | GolfScoreCreateWithoutUserInput[] | GolfScoreUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: GolfScoreCreateOrConnectWithoutUserInput | GolfScoreCreateOrConnectWithoutUserInput[]
-    upsert?: GolfScoreUpsertWithWhereUniqueWithoutUserInput | GolfScoreUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: GolfScoreCreateManyUserInputEnvelope
-    set?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
-    disconnect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
-    delete?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
-    connect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
-    update?: GolfScoreUpdateWithWhereUniqueWithoutUserInput | GolfScoreUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: GolfScoreUpdateManyWithWhereWithoutUserInput | GolfScoreUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
-  }
-
-  export type UserCharityUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput> | UserCharityCreateWithoutUserInput[] | UserCharityUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserCharityCreateOrConnectWithoutUserInput | UserCharityCreateOrConnectWithoutUserInput[]
-    upsert?: UserCharityUpsertWithWhereUniqueWithoutUserInput | UserCharityUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserCharityCreateManyUserInputEnvelope
-    set?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    disconnect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    delete?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    update?: UserCharityUpdateWithWhereUniqueWithoutUserInput | UserCharityUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserCharityUpdateManyWithWhereWithoutUserInput | UserCharityUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
-  }
-
-  export type SubscriptionOrderUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput> | SubscriptionOrderCreateWithoutUserInput[] | SubscriptionOrderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput | SubscriptionOrderCreateOrConnectWithoutUserInput[]
-    upsert?: SubscriptionOrderUpsertWithWhereUniqueWithoutUserInput | SubscriptionOrderUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SubscriptionOrderCreateManyUserInputEnvelope
-    set?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    disconnect?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    delete?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    connect?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    update?: SubscriptionOrderUpdateWithWhereUniqueWithoutUserInput | SubscriptionOrderUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SubscriptionOrderUpdateManyWithWhereWithoutUserInput | SubscriptionOrderUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SubscriptionOrderScalarWhereInput | SubscriptionOrderScalarWhereInput[]
-  }
-
   export type DrawUpdateManyWithoutAdminNestedInput = {
     create?: XOR<DrawCreateWithoutAdminInput, DrawUncheckedCreateWithoutAdminInput> | DrawCreateWithoutAdminInput[] | DrawUncheckedCreateWithoutAdminInput[]
     connectOrCreate?: DrawCreateOrConnectWithoutAdminInput | DrawCreateOrConnectWithoutAdminInput[]
@@ -19437,20 +19351,6 @@ export namespace Prisma {
     update?: DrawUpdateWithWhereUniqueWithoutAdminInput | DrawUpdateWithWhereUniqueWithoutAdminInput[]
     updateMany?: DrawUpdateManyWithWhereWithoutAdminInput | DrawUpdateManyWithWhereWithoutAdminInput[]
     deleteMany?: DrawScalarWhereInput | DrawScalarWhereInput[]
-  }
-
-  export type WinnerUpdateManyWithoutUserNestedInput = {
-    create?: XOR<WinnerCreateWithoutUserInput, WinnerUncheckedCreateWithoutUserInput> | WinnerCreateWithoutUserInput[] | WinnerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: WinnerCreateOrConnectWithoutUserInput | WinnerCreateOrConnectWithoutUserInput[]
-    upsert?: WinnerUpsertWithWhereUniqueWithoutUserInput | WinnerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: WinnerCreateManyUserInputEnvelope
-    set?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    disconnect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    delete?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    update?: WinnerUpdateWithWhereUniqueWithoutUserInput | WinnerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: WinnerUpdateManyWithWhereWithoutUserInput | WinnerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
   }
 
   export type ParticipantUpdateManyWithoutUserNestedInput = {
@@ -19467,7 +19367,21 @@ export namespace Prisma {
     deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
   }
 
-  export type GolfScoreUncheckedUpdateManyWithoutUserNestedInput = {
+  export type WinnerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<WinnerCreateWithoutUserInput, WinnerUncheckedCreateWithoutUserInput> | WinnerCreateWithoutUserInput[] | WinnerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: WinnerCreateOrConnectWithoutUserInput | WinnerCreateOrConnectWithoutUserInput[]
+    upsert?: WinnerUpsertWithWhereUniqueWithoutUserInput | WinnerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: WinnerCreateManyUserInputEnvelope
+    set?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    disconnect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    delete?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    update?: WinnerUpdateWithWhereUniqueWithoutUserInput | WinnerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: WinnerUpdateManyWithWhereWithoutUserInput | WinnerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
+  }
+
+  export type GolfScoreUpdateManyWithoutUserNestedInput = {
     create?: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput> | GolfScoreCreateWithoutUserInput[] | GolfScoreUncheckedCreateWithoutUserInput[]
     connectOrCreate?: GolfScoreCreateOrConnectWithoutUserInput | GolfScoreCreateOrConnectWithoutUserInput[]
     upsert?: GolfScoreUpsertWithWhereUniqueWithoutUserInput | GolfScoreUpsertWithWhereUniqueWithoutUserInput[]
@@ -19481,7 +19395,17 @@ export namespace Prisma {
     deleteMany?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
   }
 
-  export type UserCharityUncheckedUpdateManyWithoutUserNestedInput = {
+  export type SubscriptionOrderUpdateOneWithoutUserNestedInput = {
+    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput
+    upsert?: SubscriptionOrderUpsertWithoutUserInput
+    disconnect?: SubscriptionOrderWhereInput | boolean
+    delete?: SubscriptionOrderWhereInput | boolean
+    connect?: SubscriptionOrderWhereUniqueInput
+    update?: XOR<XOR<SubscriptionOrderUpdateToOneWithWhereWithoutUserInput, SubscriptionOrderUpdateWithoutUserInput>, SubscriptionOrderUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserCharityUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput> | UserCharityCreateWithoutUserInput[] | UserCharityUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserCharityCreateOrConnectWithoutUserInput | UserCharityCreateOrConnectWithoutUserInput[]
     upsert?: UserCharityUpsertWithWhereUniqueWithoutUserInput | UserCharityUpsertWithWhereUniqueWithoutUserInput[]
@@ -19493,20 +19417,6 @@ export namespace Prisma {
     update?: UserCharityUpdateWithWhereUniqueWithoutUserInput | UserCharityUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: UserCharityUpdateManyWithWhereWithoutUserInput | UserCharityUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
-  }
-
-  export type SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput> | SubscriptionOrderCreateWithoutUserInput[] | SubscriptionOrderUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput | SubscriptionOrderCreateOrConnectWithoutUserInput[]
-    upsert?: SubscriptionOrderUpsertWithWhereUniqueWithoutUserInput | SubscriptionOrderUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SubscriptionOrderCreateManyUserInputEnvelope
-    set?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    disconnect?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    delete?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    connect?: SubscriptionOrderWhereUniqueInput | SubscriptionOrderWhereUniqueInput[]
-    update?: SubscriptionOrderUpdateWithWhereUniqueWithoutUserInput | SubscriptionOrderUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SubscriptionOrderUpdateManyWithWhereWithoutUserInput | SubscriptionOrderUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SubscriptionOrderScalarWhereInput | SubscriptionOrderScalarWhereInput[]
   }
 
   export type DrawUncheckedUpdateManyWithoutAdminNestedInput = {
@@ -19523,6 +19433,20 @@ export namespace Prisma {
     deleteMany?: DrawScalarWhereInput | DrawScalarWhereInput[]
   }
 
+  export type ParticipantUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
+    upsert?: ParticipantUpsertWithWhereUniqueWithoutUserInput | ParticipantUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ParticipantCreateManyUserInputEnvelope
+    set?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    disconnect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    delete?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+    update?: ParticipantUpdateWithWhereUniqueWithoutUserInput | ParticipantUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ParticipantUpdateManyWithWhereWithoutUserInput | ParticipantUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  }
+
   export type WinnerUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<WinnerCreateWithoutUserInput, WinnerUncheckedCreateWithoutUserInput> | WinnerCreateWithoutUserInput[] | WinnerUncheckedCreateWithoutUserInput[]
     connectOrCreate?: WinnerCreateOrConnectWithoutUserInput | WinnerCreateOrConnectWithoutUserInput[]
@@ -19537,18 +19461,42 @@ export namespace Prisma {
     deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
   }
 
-  export type ParticipantUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput> | ParticipantCreateWithoutUserInput[] | ParticipantUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ParticipantCreateOrConnectWithoutUserInput | ParticipantCreateOrConnectWithoutUserInput[]
-    upsert?: ParticipantUpsertWithWhereUniqueWithoutUserInput | ParticipantUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ParticipantCreateManyUserInputEnvelope
-    set?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
-    disconnect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
-    delete?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
-    connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
-    update?: ParticipantUpdateWithWhereUniqueWithoutUserInput | ParticipantUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ParticipantUpdateManyWithWhereWithoutUserInput | ParticipantUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  export type GolfScoreUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput> | GolfScoreCreateWithoutUserInput[] | GolfScoreUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: GolfScoreCreateOrConnectWithoutUserInput | GolfScoreCreateOrConnectWithoutUserInput[]
+    upsert?: GolfScoreUpsertWithWhereUniqueWithoutUserInput | GolfScoreUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: GolfScoreCreateManyUserInputEnvelope
+    set?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
+    disconnect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
+    delete?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
+    connect?: GolfScoreWhereUniqueInput | GolfScoreWhereUniqueInput[]
+    update?: GolfScoreUpdateWithWhereUniqueWithoutUserInput | GolfScoreUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: GolfScoreUpdateManyWithWhereWithoutUserInput | GolfScoreUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
+  }
+
+  export type SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
+    connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserInput
+    upsert?: SubscriptionOrderUpsertWithoutUserInput
+    disconnect?: SubscriptionOrderWhereInput | boolean
+    delete?: SubscriptionOrderWhereInput | boolean
+    connect?: SubscriptionOrderWhereUniqueInput
+    update?: XOR<XOR<SubscriptionOrderUpdateToOneWithWhereWithoutUserInput, SubscriptionOrderUpdateWithoutUserInput>, SubscriptionOrderUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserCharityUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput> | UserCharityCreateWithoutUserInput[] | UserCharityUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserCharityCreateOrConnectWithoutUserInput | UserCharityCreateOrConnectWithoutUserInput[]
+    upsert?: UserCharityUpsertWithWhereUniqueWithoutUserInput | UserCharityUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserCharityCreateManyUserInputEnvelope
+    set?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
+    disconnect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
+    delete?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
+    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
+    update?: UserCharityUpdateWithWhereUniqueWithoutUserInput | UserCharityUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserCharityUpdateManyWithWhereWithoutUserInput | UserCharityUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
   }
 
   export type CharityImageCreateNestedManyWithoutCharityInput = {
@@ -19649,6 +19597,12 @@ export namespace Prisma {
     update?: XOR<XOR<CharityUpdateToOneWithWhereWithoutImagesInput, CharityUpdateWithoutImagesInput>, CharityUncheckedUpdateWithoutImagesInput>
   }
 
+  export type CharityCreateNestedOneWithoutUserCharitiesInput = {
+    create?: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
+    connectOrCreate?: CharityCreateOrConnectWithoutUserCharitiesInput
+    connect?: CharityWhereUniqueInput
+  }
+
   export type SubscriptionOrderCreateNestedOneWithoutUserCharitiesInput = {
     create?: XOR<SubscriptionOrderCreateWithoutUserCharitiesInput, SubscriptionOrderUncheckedCreateWithoutUserCharitiesInput>
     connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserCharitiesInput
@@ -19659,12 +19613,6 @@ export namespace Prisma {
     create?: XOR<UserCreateWithoutUserCharitiesInput, UserUncheckedCreateWithoutUserCharitiesInput>
     connectOrCreate?: UserCreateOrConnectWithoutUserCharitiesInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type CharityCreateNestedOneWithoutUserCharitiesInput = {
-    create?: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
-    connectOrCreate?: CharityCreateOrConnectWithoutUserCharitiesInput
-    connect?: CharityWhereUniqueInput
   }
 
   export type EnumCharityContributionTypeFieldUpdateOperationsInput = {
@@ -19699,6 +19647,14 @@ export namespace Prisma {
     set?: $Enums.CharityStatus
   }
 
+  export type CharityUpdateOneRequiredWithoutUserCharitiesNestedInput = {
+    create?: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
+    connectOrCreate?: CharityCreateOrConnectWithoutUserCharitiesInput
+    upsert?: CharityUpsertWithoutUserCharitiesInput
+    connect?: CharityWhereUniqueInput
+    update?: XOR<XOR<CharityUpdateToOneWithWhereWithoutUserCharitiesInput, CharityUpdateWithoutUserCharitiesInput>, CharityUncheckedUpdateWithoutUserCharitiesInput>
+  }
+
   export type SubscriptionOrderUpdateOneRequiredWithoutUserCharitiesNestedInput = {
     create?: XOR<SubscriptionOrderCreateWithoutUserCharitiesInput, SubscriptionOrderUncheckedCreateWithoutUserCharitiesInput>
     connectOrCreate?: SubscriptionOrderCreateOrConnectWithoutUserCharitiesInput
@@ -19713,14 +19669,6 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutUserCharitiesInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUserCharitiesInput, UserUpdateWithoutUserCharitiesInput>, UserUncheckedUpdateWithoutUserCharitiesInput>
-  }
-
-  export type CharityUpdateOneRequiredWithoutUserCharitiesNestedInput = {
-    create?: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
-    connectOrCreate?: CharityCreateOrConnectWithoutUserCharitiesInput
-    upsert?: CharityUpsertWithoutUserCharitiesInput
-    connect?: CharityWhereUniqueInput
-    update?: XOR<XOR<CharityUpdateToOneWithWhereWithoutUserCharitiesInput, CharityUpdateWithoutUserCharitiesInput>, CharityUncheckedUpdateWithoutUserCharitiesInput>
   }
 
   export type UserCreateNestedOneWithoutScoresInput = {
@@ -19800,18 +19748,16 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type UserCharityCreateNestedManyWithoutSubscriptionInput = {
-    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput> | UserCharityCreateWithoutSubscriptionInput[] | UserCharityUncheckedCreateWithoutSubscriptionInput[]
-    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput | UserCharityCreateOrConnectWithoutSubscriptionInput[]
-    createMany?: UserCharityCreateManySubscriptionInputEnvelope
-    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
+  export type UserCharityCreateNestedOneWithoutSubscriptionInput = {
+    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput>
+    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput
+    connect?: UserCharityWhereUniqueInput
   }
 
-  export type UserCharityUncheckedCreateNestedManyWithoutSubscriptionInput = {
-    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput> | UserCharityCreateWithoutSubscriptionInput[] | UserCharityUncheckedCreateWithoutSubscriptionInput[]
-    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput | UserCharityCreateOrConnectWithoutSubscriptionInput[]
-    createMany?: UserCharityCreateManySubscriptionInputEnvelope
-    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
+  export type UserCharityUncheckedCreateNestedOneWithoutSubscriptionInput = {
+    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput>
+    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput
+    connect?: UserCharityWhereUniqueInput
   }
 
   export type EnumPaymentGatewayFieldUpdateOperationsInput = {
@@ -19838,32 +19784,24 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSubcriptionsInput, UserUpdateWithoutSubcriptionsInput>, UserUncheckedUpdateWithoutSubcriptionsInput>
   }
 
-  export type UserCharityUpdateManyWithoutSubscriptionNestedInput = {
-    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput> | UserCharityCreateWithoutSubscriptionInput[] | UserCharityUncheckedCreateWithoutSubscriptionInput[]
-    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput | UserCharityCreateOrConnectWithoutSubscriptionInput[]
-    upsert?: UserCharityUpsertWithWhereUniqueWithoutSubscriptionInput | UserCharityUpsertWithWhereUniqueWithoutSubscriptionInput[]
-    createMany?: UserCharityCreateManySubscriptionInputEnvelope
-    set?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    disconnect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    delete?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    update?: UserCharityUpdateWithWhereUniqueWithoutSubscriptionInput | UserCharityUpdateWithWhereUniqueWithoutSubscriptionInput[]
-    updateMany?: UserCharityUpdateManyWithWhereWithoutSubscriptionInput | UserCharityUpdateManyWithWhereWithoutSubscriptionInput[]
-    deleteMany?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
+  export type UserCharityUpdateOneWithoutSubscriptionNestedInput = {
+    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput>
+    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput
+    upsert?: UserCharityUpsertWithoutSubscriptionInput
+    disconnect?: UserCharityWhereInput | boolean
+    delete?: UserCharityWhereInput | boolean
+    connect?: UserCharityWhereUniqueInput
+    update?: XOR<XOR<UserCharityUpdateToOneWithWhereWithoutSubscriptionInput, UserCharityUpdateWithoutSubscriptionInput>, UserCharityUncheckedUpdateWithoutSubscriptionInput>
   }
 
-  export type UserCharityUncheckedUpdateManyWithoutSubscriptionNestedInput = {
-    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput> | UserCharityCreateWithoutSubscriptionInput[] | UserCharityUncheckedCreateWithoutSubscriptionInput[]
-    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput | UserCharityCreateOrConnectWithoutSubscriptionInput[]
-    upsert?: UserCharityUpsertWithWhereUniqueWithoutSubscriptionInput | UserCharityUpsertWithWhereUniqueWithoutSubscriptionInput[]
-    createMany?: UserCharityCreateManySubscriptionInputEnvelope
-    set?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    disconnect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    delete?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    connect?: UserCharityWhereUniqueInput | UserCharityWhereUniqueInput[]
-    update?: UserCharityUpdateWithWhereUniqueWithoutSubscriptionInput | UserCharityUpdateWithWhereUniqueWithoutSubscriptionInput[]
-    updateMany?: UserCharityUpdateManyWithWhereWithoutSubscriptionInput | UserCharityUpdateManyWithWhereWithoutSubscriptionInput[]
-    deleteMany?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
+  export type UserCharityUncheckedUpdateOneWithoutSubscriptionNestedInput = {
+    create?: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput>
+    connectOrCreate?: UserCharityCreateOrConnectWithoutSubscriptionInput
+    upsert?: UserCharityUpsertWithoutSubscriptionInput
+    disconnect?: UserCharityWhereInput | boolean
+    delete?: UserCharityWhereInput | boolean
+    connect?: UserCharityWhereUniqueInput
+    update?: XOR<XOR<UserCharityUpdateToOneWithWhereWithoutSubscriptionInput, UserCharityUpdateWithoutSubscriptionInput>, UserCharityUncheckedUpdateWithoutSubscriptionInput>
   }
 
   export type UserCreateNestedOneWithoutDrawsInput = {
@@ -19885,18 +19823,18 @@ export namespace Prisma {
     connect?: DrawWhereUniqueInput | DrawWhereUniqueInput[]
   }
 
-  export type WinnerCreateNestedManyWithoutDrawInput = {
-    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
-    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
-    createMany?: WinnerCreateManyDrawInputEnvelope
-    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-  }
-
   export type ParticipantCreateNestedManyWithoutDrawInput = {
     create?: XOR<ParticipantCreateWithoutDrawInput, ParticipantUncheckedCreateWithoutDrawInput> | ParticipantCreateWithoutDrawInput[] | ParticipantUncheckedCreateWithoutDrawInput[]
     connectOrCreate?: ParticipantCreateOrConnectWithoutDrawInput | ParticipantCreateOrConnectWithoutDrawInput[]
     createMany?: ParticipantCreateManyDrawInputEnvelope
     connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  }
+
+  export type WinnerCreateNestedManyWithoutDrawInput = {
+    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
+    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
+    createMany?: WinnerCreateManyDrawInputEnvelope
+    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
   }
 
   export type DrawUncheckedCreateNestedManyWithoutRolledOverFromInput = {
@@ -19906,18 +19844,18 @@ export namespace Prisma {
     connect?: DrawWhereUniqueInput | DrawWhereUniqueInput[]
   }
 
-  export type WinnerUncheckedCreateNestedManyWithoutDrawInput = {
-    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
-    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
-    createMany?: WinnerCreateManyDrawInputEnvelope
-    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-  }
-
   export type ParticipantUncheckedCreateNestedManyWithoutDrawInput = {
     create?: XOR<ParticipantCreateWithoutDrawInput, ParticipantUncheckedCreateWithoutDrawInput> | ParticipantCreateWithoutDrawInput[] | ParticipantUncheckedCreateWithoutDrawInput[]
     connectOrCreate?: ParticipantCreateOrConnectWithoutDrawInput | ParticipantCreateOrConnectWithoutDrawInput[]
     createMany?: ParticipantCreateManyDrawInputEnvelope
     connect?: ParticipantWhereUniqueInput | ParticipantWhereUniqueInput[]
+  }
+
+  export type WinnerUncheckedCreateNestedManyWithoutDrawInput = {
+    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
+    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
+    createMany?: WinnerCreateManyDrawInputEnvelope
+    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
   }
 
   export type EnumDrawStatusFieldUpdateOperationsInput = {
@@ -19956,20 +19894,6 @@ export namespace Prisma {
     deleteMany?: DrawScalarWhereInput | DrawScalarWhereInput[]
   }
 
-  export type WinnerUpdateManyWithoutDrawNestedInput = {
-    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
-    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
-    upsert?: WinnerUpsertWithWhereUniqueWithoutDrawInput | WinnerUpsertWithWhereUniqueWithoutDrawInput[]
-    createMany?: WinnerCreateManyDrawInputEnvelope
-    set?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    disconnect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    delete?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    update?: WinnerUpdateWithWhereUniqueWithoutDrawInput | WinnerUpdateWithWhereUniqueWithoutDrawInput[]
-    updateMany?: WinnerUpdateManyWithWhereWithoutDrawInput | WinnerUpdateManyWithWhereWithoutDrawInput[]
-    deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
-  }
-
   export type ParticipantUpdateManyWithoutDrawNestedInput = {
     create?: XOR<ParticipantCreateWithoutDrawInput, ParticipantUncheckedCreateWithoutDrawInput> | ParticipantCreateWithoutDrawInput[] | ParticipantUncheckedCreateWithoutDrawInput[]
     connectOrCreate?: ParticipantCreateOrConnectWithoutDrawInput | ParticipantCreateOrConnectWithoutDrawInput[]
@@ -19982,6 +19906,20 @@ export namespace Prisma {
     update?: ParticipantUpdateWithWhereUniqueWithoutDrawInput | ParticipantUpdateWithWhereUniqueWithoutDrawInput[]
     updateMany?: ParticipantUpdateManyWithWhereWithoutDrawInput | ParticipantUpdateManyWithWhereWithoutDrawInput[]
     deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  }
+
+  export type WinnerUpdateManyWithoutDrawNestedInput = {
+    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
+    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
+    upsert?: WinnerUpsertWithWhereUniqueWithoutDrawInput | WinnerUpsertWithWhereUniqueWithoutDrawInput[]
+    createMany?: WinnerCreateManyDrawInputEnvelope
+    set?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    disconnect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    delete?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    update?: WinnerUpdateWithWhereUniqueWithoutDrawInput | WinnerUpdateWithWhereUniqueWithoutDrawInput[]
+    updateMany?: WinnerUpdateManyWithWhereWithoutDrawInput | WinnerUpdateManyWithWhereWithoutDrawInput[]
+    deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
   }
 
   export type DrawUncheckedUpdateManyWithoutRolledOverFromNestedInput = {
@@ -19998,20 +19936,6 @@ export namespace Prisma {
     deleteMany?: DrawScalarWhereInput | DrawScalarWhereInput[]
   }
 
-  export type WinnerUncheckedUpdateManyWithoutDrawNestedInput = {
-    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
-    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
-    upsert?: WinnerUpsertWithWhereUniqueWithoutDrawInput | WinnerUpsertWithWhereUniqueWithoutDrawInput[]
-    createMany?: WinnerCreateManyDrawInputEnvelope
-    set?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    disconnect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    delete?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
-    update?: WinnerUpdateWithWhereUniqueWithoutDrawInput | WinnerUpdateWithWhereUniqueWithoutDrawInput[]
-    updateMany?: WinnerUpdateManyWithWhereWithoutDrawInput | WinnerUpdateManyWithWhereWithoutDrawInput[]
-    deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
-  }
-
   export type ParticipantUncheckedUpdateManyWithoutDrawNestedInput = {
     create?: XOR<ParticipantCreateWithoutDrawInput, ParticipantUncheckedCreateWithoutDrawInput> | ParticipantCreateWithoutDrawInput[] | ParticipantUncheckedCreateWithoutDrawInput[]
     connectOrCreate?: ParticipantCreateOrConnectWithoutDrawInput | ParticipantCreateOrConnectWithoutDrawInput[]
@@ -20024,6 +19948,20 @@ export namespace Prisma {
     update?: ParticipantUpdateWithWhereUniqueWithoutDrawInput | ParticipantUpdateWithWhereUniqueWithoutDrawInput[]
     updateMany?: ParticipantUpdateManyWithWhereWithoutDrawInput | ParticipantUpdateManyWithWhereWithoutDrawInput[]
     deleteMany?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+  }
+
+  export type WinnerUncheckedUpdateManyWithoutDrawNestedInput = {
+    create?: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput> | WinnerCreateWithoutDrawInput[] | WinnerUncheckedCreateWithoutDrawInput[]
+    connectOrCreate?: WinnerCreateOrConnectWithoutDrawInput | WinnerCreateOrConnectWithoutDrawInput[]
+    upsert?: WinnerUpsertWithWhereUniqueWithoutDrawInput | WinnerUpsertWithWhereUniqueWithoutDrawInput[]
+    createMany?: WinnerCreateManyDrawInputEnvelope
+    set?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    disconnect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    delete?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    connect?: WinnerWhereUniqueInput | WinnerWhereUniqueInput[]
+    update?: WinnerUpdateWithWhereUniqueWithoutDrawInput | WinnerUpdateWithWhereUniqueWithoutDrawInput[]
+    updateMany?: WinnerUpdateManyWithWhereWithoutDrawInput | WinnerUpdateManyWithWhereWithoutDrawInput[]
+    deleteMany?: WinnerScalarWhereInput | WinnerScalarWhereInput[]
   }
 
   export type DrawCreateNestedOneWithoutWinnersInput = {
@@ -20519,132 +20457,6 @@ export namespace Prisma {
     _max?: NestedEnumWinnerPaymentStatusFilter<$PrismaModel>
   }
 
-  export type GolfScoreCreateWithoutUserInput = {
-    id?: string
-    score: number
-    playedOn: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GolfScoreUncheckedCreateWithoutUserInput = {
-    id?: string
-    score: number
-    playedOn: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GolfScoreCreateOrConnectWithoutUserInput = {
-    where: GolfScoreWhereUniqueInput
-    create: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput>
-  }
-
-  export type GolfScoreCreateManyUserInputEnvelope = {
-    data: GolfScoreCreateManyUserInput | GolfScoreCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type UserCharityCreateWithoutUserInput = {
-    id?: string
-    type: $Enums.CharityContributionType
-    percentage?: Decimal | DecimalJsLike | number | string | null
-    amount: Decimal | DecimalJsLike | number | string
-    currency?: string
-    month?: number | null
-    year?: number | null
-    status?: $Enums.CharityStatus
-    paidAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subscription: SubscriptionOrderCreateNestedOneWithoutUserCharitiesInput
-    charity: CharityCreateNestedOneWithoutUserCharitiesInput
-  }
-
-  export type UserCharityUncheckedCreateWithoutUserInput = {
-    id?: string
-    charityId: string
-    subscriptionId: string
-    type: $Enums.CharityContributionType
-    percentage?: Decimal | DecimalJsLike | number | string | null
-    amount: Decimal | DecimalJsLike | number | string
-    currency?: string
-    month?: number | null
-    year?: number | null
-    status?: $Enums.CharityStatus
-    paidAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserCharityCreateOrConnectWithoutUserInput = {
-    where: UserCharityWhereUniqueInput
-    create: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput>
-  }
-
-  export type UserCharityCreateManyUserInputEnvelope = {
-    data: UserCharityCreateManyUserInput | UserCharityCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type SubscriptionOrderCreateWithoutUserInput = {
-    id?: string
-    periodStart: Date | string
-    periodEnd: Date | string
-    stripeSessionId?: string | null
-    stripePaymentIntentId?: string | null
-    stripeCustomerId?: string | null
-    stripeClientSecret?: string | null
-    stripeEventId?: string | null
-    paymentGateway?: $Enums.PaymentGateway
-    amount: number
-    currency?: string
-    status?: $Enums.PaymentStatus
-    failReason?: string | null
-    completedAt?: Date | string | null
-    cancelledAt?: Date | string | null
-    ipAddress?: string | null
-    userAgent?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    subscriptionModel: SubscriptionModelCreateNestedOneWithoutSubscriptionOrdersInput
-    userCharities?: UserCharityCreateNestedManyWithoutSubscriptionInput
-  }
-
-  export type SubscriptionOrderUncheckedCreateWithoutUserInput = {
-    id?: string
-    subscriptionModelId: string
-    periodStart: Date | string
-    periodEnd: Date | string
-    stripeSessionId?: string | null
-    stripePaymentIntentId?: string | null
-    stripeCustomerId?: string | null
-    stripeClientSecret?: string | null
-    stripeEventId?: string | null
-    paymentGateway?: $Enums.PaymentGateway
-    amount: number
-    currency?: string
-    status?: $Enums.PaymentStatus
-    failReason?: string | null
-    completedAt?: Date | string | null
-    cancelledAt?: Date | string | null
-    ipAddress?: string | null
-    userAgent?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutSubscriptionInput
-  }
-
-  export type SubscriptionOrderCreateOrConnectWithoutUserInput = {
-    where: SubscriptionOrderWhereUniqueInput
-    create: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
-  }
-
-  export type SubscriptionOrderCreateManyUserInputEnvelope = {
-    data: SubscriptionOrderCreateManyUserInput | SubscriptionOrderCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type DrawCreateWithoutAdminInput = {
     id?: string
     prizePool: number
@@ -20662,8 +20474,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     rolledOverFrom?: DrawCreateNestedOneWithoutRolledOverToInput
     rolledOverTo?: DrawCreateNestedManyWithoutRolledOverFromInput
-    winners?: WinnerCreateNestedManyWithoutDrawInput
     participants?: ParticipantCreateNestedManyWithoutDrawInput
+    winners?: WinnerCreateNestedManyWithoutDrawInput
   }
 
   export type DrawUncheckedCreateWithoutAdminInput = {
@@ -20683,8 +20495,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolledOverTo?: DrawUncheckedCreateNestedManyWithoutRolledOverFromInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutDrawInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
   }
 
   export type DrawCreateOrConnectWithoutAdminInput = {
@@ -20694,6 +20506,32 @@ export namespace Prisma {
 
   export type DrawCreateManyAdminInputEnvelope = {
     data: DrawCreateManyAdminInput | DrawCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ParticipantCreateWithoutUserInput = {
+    id?: string
+    score: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    draw: DrawCreateNestedOneWithoutParticipantsInput
+  }
+
+  export type ParticipantUncheckedCreateWithoutUserInput = {
+    id?: string
+    drawId: string
+    score: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ParticipantCreateOrConnectWithoutUserInput = {
+    where: ParticipantWhereUniqueInput
+    create: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput>
+  }
+
+  export type ParticipantCreateManyUserInputEnvelope = {
+    data: ParticipantCreateManyUserInput | ParticipantCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -20739,137 +20577,125 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ParticipantCreateWithoutUserInput = {
+  export type GolfScoreCreateWithoutUserInput = {
     id?: string
-    score: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    draw: DrawCreateNestedOneWithoutParticipantsInput
-  }
-
-  export type ParticipantUncheckedCreateWithoutUserInput = {
-    id?: string
-    drawId: string
-    score: string
+    score: number
+    playedOn: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type ParticipantCreateOrConnectWithoutUserInput = {
-    where: ParticipantWhereUniqueInput
-    create: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput>
+  export type GolfScoreUncheckedCreateWithoutUserInput = {
+    id?: string
+    score: number
+    playedOn: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type ParticipantCreateManyUserInputEnvelope = {
-    data: ParticipantCreateManyUserInput | ParticipantCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type GolfScoreUpsertWithWhereUniqueWithoutUserInput = {
+  export type GolfScoreCreateOrConnectWithoutUserInput = {
     where: GolfScoreWhereUniqueInput
-    update: XOR<GolfScoreUpdateWithoutUserInput, GolfScoreUncheckedUpdateWithoutUserInput>
     create: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput>
   }
 
-  export type GolfScoreUpdateWithWhereUniqueWithoutUserInput = {
-    where: GolfScoreWhereUniqueInput
-    data: XOR<GolfScoreUpdateWithoutUserInput, GolfScoreUncheckedUpdateWithoutUserInput>
+  export type GolfScoreCreateManyUserInputEnvelope = {
+    data: GolfScoreCreateManyUserInput | GolfScoreCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
-  export type GolfScoreUpdateManyWithWhereWithoutUserInput = {
-    where: GolfScoreScalarWhereInput
-    data: XOR<GolfScoreUpdateManyMutationInput, GolfScoreUncheckedUpdateManyWithoutUserInput>
+  export type SubscriptionOrderCreateWithoutUserInput = {
+    id?: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    stripeSessionId?: string | null
+    stripePaymentIntentId?: string | null
+    stripeCustomerId?: string | null
+    stripeClientSecret?: string | null
+    stripeEventId?: string | null
+    paymentGateway?: $Enums.PaymentGateway
+    amount: number
+    currency?: string
+    status?: $Enums.PaymentStatus
+    failReason?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    subscriptionModel: SubscriptionModelCreateNestedOneWithoutSubscriptionOrdersInput
+    userCharities?: UserCharityCreateNestedOneWithoutSubscriptionInput
   }
 
-  export type GolfScoreScalarWhereInput = {
-    AND?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
-    OR?: GolfScoreScalarWhereInput[]
-    NOT?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
-    id?: StringFilter<"GolfScore"> | string
-    userId?: StringFilter<"GolfScore"> | string
-    score?: IntFilter<"GolfScore"> | number
-    playedOn?: DateTimeFilter<"GolfScore"> | Date | string
-    createdAt?: DateTimeFilter<"GolfScore"> | Date | string
-    updatedAt?: DateTimeFilter<"GolfScore"> | Date | string
+  export type SubscriptionOrderUncheckedCreateWithoutUserInput = {
+    id?: string
+    subscriptionModelId: string
+    periodStart: Date | string
+    periodEnd: Date | string
+    stripeSessionId?: string | null
+    stripePaymentIntentId?: string | null
+    stripeCustomerId?: string | null
+    stripeClientSecret?: string | null
+    stripeEventId?: string | null
+    paymentGateway?: $Enums.PaymentGateway
+    amount: number
+    currency?: string
+    status?: $Enums.PaymentStatus
+    failReason?: string | null
+    completedAt?: Date | string | null
+    cancelledAt?: Date | string | null
+    ipAddress?: string | null
+    userAgent?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    userCharities?: UserCharityUncheckedCreateNestedOneWithoutSubscriptionInput
   }
 
-  export type UserCharityUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserCharityWhereUniqueInput
-    update: XOR<UserCharityUpdateWithoutUserInput, UserCharityUncheckedUpdateWithoutUserInput>
-    create: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput>
-  }
-
-  export type UserCharityUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserCharityWhereUniqueInput
-    data: XOR<UserCharityUpdateWithoutUserInput, UserCharityUncheckedUpdateWithoutUserInput>
-  }
-
-  export type UserCharityUpdateManyWithWhereWithoutUserInput = {
-    where: UserCharityScalarWhereInput
-    data: XOR<UserCharityUpdateManyMutationInput, UserCharityUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type UserCharityScalarWhereInput = {
-    AND?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
-    OR?: UserCharityScalarWhereInput[]
-    NOT?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
-    id?: StringFilter<"UserCharity"> | string
-    userId?: StringFilter<"UserCharity"> | string
-    charityId?: StringFilter<"UserCharity"> | string
-    subscriptionId?: StringFilter<"UserCharity"> | string
-    type?: EnumCharityContributionTypeFilter<"UserCharity"> | $Enums.CharityContributionType
-    percentage?: DecimalNullableFilter<"UserCharity"> | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFilter<"UserCharity"> | Decimal | DecimalJsLike | number | string
-    currency?: StringFilter<"UserCharity"> | string
-    month?: IntNullableFilter<"UserCharity"> | number | null
-    year?: IntNullableFilter<"UserCharity"> | number | null
-    status?: EnumCharityStatusFilter<"UserCharity"> | $Enums.CharityStatus
-    paidAt?: DateTimeNullableFilter<"UserCharity"> | Date | string | null
-    createdAt?: DateTimeFilter<"UserCharity"> | Date | string
-    updatedAt?: DateTimeFilter<"UserCharity"> | Date | string
-  }
-
-  export type SubscriptionOrderUpsertWithWhereUniqueWithoutUserInput = {
+  export type SubscriptionOrderCreateOrConnectWithoutUserInput = {
     where: SubscriptionOrderWhereUniqueInput
-    update: XOR<SubscriptionOrderUpdateWithoutUserInput, SubscriptionOrderUncheckedUpdateWithoutUserInput>
     create: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
   }
 
-  export type SubscriptionOrderUpdateWithWhereUniqueWithoutUserInput = {
-    where: SubscriptionOrderWhereUniqueInput
-    data: XOR<SubscriptionOrderUpdateWithoutUserInput, SubscriptionOrderUncheckedUpdateWithoutUserInput>
+  export type UserCharityCreateWithoutUserInput = {
+    id?: string
+    type: $Enums.CharityContributionType
+    percentage?: Decimal | DecimalJsLike | number | string | null
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    month?: number | null
+    year?: number | null
+    status?: $Enums.CharityStatus
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    charity: CharityCreateNestedOneWithoutUserCharitiesInput
+    subscription: SubscriptionOrderCreateNestedOneWithoutUserCharitiesInput
   }
 
-  export type SubscriptionOrderUpdateManyWithWhereWithoutUserInput = {
-    where: SubscriptionOrderScalarWhereInput
-    data: XOR<SubscriptionOrderUpdateManyMutationInput, SubscriptionOrderUncheckedUpdateManyWithoutUserInput>
+  export type UserCharityUncheckedCreateWithoutUserInput = {
+    id?: string
+    charityId: string
+    subscriptionId: string
+    type: $Enums.CharityContributionType
+    percentage?: Decimal | DecimalJsLike | number | string | null
+    amount: Decimal | DecimalJsLike | number | string
+    currency?: string
+    month?: number | null
+    year?: number | null
+    status?: $Enums.CharityStatus
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
-  export type SubscriptionOrderScalarWhereInput = {
-    AND?: SubscriptionOrderScalarWhereInput | SubscriptionOrderScalarWhereInput[]
-    OR?: SubscriptionOrderScalarWhereInput[]
-    NOT?: SubscriptionOrderScalarWhereInput | SubscriptionOrderScalarWhereInput[]
-    id?: StringFilter<"SubscriptionOrder"> | string
-    subscriptionModelId?: StringFilter<"SubscriptionOrder"> | string
-    userId?: StringFilter<"SubscriptionOrder"> | string
-    periodStart?: DateTimeFilter<"SubscriptionOrder"> | Date | string
-    periodEnd?: DateTimeFilter<"SubscriptionOrder"> | Date | string
-    stripeSessionId?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    stripePaymentIntentId?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    stripeCustomerId?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    stripeClientSecret?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    stripeEventId?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    paymentGateway?: EnumPaymentGatewayFilter<"SubscriptionOrder"> | $Enums.PaymentGateway
-    amount?: IntFilter<"SubscriptionOrder"> | number
-    currency?: StringFilter<"SubscriptionOrder"> | string
-    status?: EnumPaymentStatusFilter<"SubscriptionOrder"> | $Enums.PaymentStatus
-    failReason?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    completedAt?: DateTimeNullableFilter<"SubscriptionOrder"> | Date | string | null
-    cancelledAt?: DateTimeNullableFilter<"SubscriptionOrder"> | Date | string | null
-    ipAddress?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    userAgent?: StringNullableFilter<"SubscriptionOrder"> | string | null
-    createdAt?: DateTimeFilter<"SubscriptionOrder"> | Date | string
-    updatedAt?: DateTimeFilter<"SubscriptionOrder"> | Date | string
+  export type UserCharityCreateOrConnectWithoutUserInput = {
+    where: UserCharityWhereUniqueInput
+    create: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserCharityCreateManyUserInputEnvelope = {
+    data: UserCharityCreateManyUserInput | UserCharityCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type DrawUpsertWithWhereUniqueWithoutAdminInput = {
@@ -20910,6 +20736,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Draw"> | Date | string
   }
 
+  export type ParticipantUpsertWithWhereUniqueWithoutUserInput = {
+    where: ParticipantWhereUniqueInput
+    update: XOR<ParticipantUpdateWithoutUserInput, ParticipantUncheckedUpdateWithoutUserInput>
+    create: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput>
+  }
+
+  export type ParticipantUpdateWithWhereUniqueWithoutUserInput = {
+    where: ParticipantWhereUniqueInput
+    data: XOR<ParticipantUpdateWithoutUserInput, ParticipantUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ParticipantUpdateManyWithWhereWithoutUserInput = {
+    where: ParticipantScalarWhereInput
+    data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ParticipantScalarWhereInput = {
+    AND?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+    OR?: ParticipantScalarWhereInput[]
+    NOT?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
+    id?: StringFilter<"Participant"> | string
+    drawId?: StringFilter<"Participant"> | string
+    userId?: StringFilter<"Participant"> | string
+    score?: StringFilter<"Participant"> | string
+    createdAt?: DateTimeFilter<"Participant"> | Date | string
+    updatedAt?: DateTimeFilter<"Participant"> | Date | string
+  }
+
   export type WinnerUpsertWithWhereUniqueWithoutUserInput = {
     where: WinnerWhereUniqueInput
     update: XOR<WinnerUpdateWithoutUserInput, WinnerUncheckedUpdateWithoutUserInput>
@@ -20946,32 +20800,127 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Winner"> | Date | string
   }
 
-  export type ParticipantUpsertWithWhereUniqueWithoutUserInput = {
-    where: ParticipantWhereUniqueInput
-    update: XOR<ParticipantUpdateWithoutUserInput, ParticipantUncheckedUpdateWithoutUserInput>
-    create: XOR<ParticipantCreateWithoutUserInput, ParticipantUncheckedCreateWithoutUserInput>
+  export type GolfScoreUpsertWithWhereUniqueWithoutUserInput = {
+    where: GolfScoreWhereUniqueInput
+    update: XOR<GolfScoreUpdateWithoutUserInput, GolfScoreUncheckedUpdateWithoutUserInput>
+    create: XOR<GolfScoreCreateWithoutUserInput, GolfScoreUncheckedCreateWithoutUserInput>
   }
 
-  export type ParticipantUpdateWithWhereUniqueWithoutUserInput = {
-    where: ParticipantWhereUniqueInput
-    data: XOR<ParticipantUpdateWithoutUserInput, ParticipantUncheckedUpdateWithoutUserInput>
+  export type GolfScoreUpdateWithWhereUniqueWithoutUserInput = {
+    where: GolfScoreWhereUniqueInput
+    data: XOR<GolfScoreUpdateWithoutUserInput, GolfScoreUncheckedUpdateWithoutUserInput>
   }
 
-  export type ParticipantUpdateManyWithWhereWithoutUserInput = {
-    where: ParticipantScalarWhereInput
-    data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyWithoutUserInput>
+  export type GolfScoreUpdateManyWithWhereWithoutUserInput = {
+    where: GolfScoreScalarWhereInput
+    data: XOR<GolfScoreUpdateManyMutationInput, GolfScoreUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type ParticipantScalarWhereInput = {
-    AND?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
-    OR?: ParticipantScalarWhereInput[]
-    NOT?: ParticipantScalarWhereInput | ParticipantScalarWhereInput[]
-    id?: StringFilter<"Participant"> | string
-    drawId?: StringFilter<"Participant"> | string
-    userId?: StringFilter<"Participant"> | string
-    score?: StringFilter<"Participant"> | string
-    createdAt?: DateTimeFilter<"Participant"> | Date | string
-    updatedAt?: DateTimeFilter<"Participant"> | Date | string
+  export type GolfScoreScalarWhereInput = {
+    AND?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
+    OR?: GolfScoreScalarWhereInput[]
+    NOT?: GolfScoreScalarWhereInput | GolfScoreScalarWhereInput[]
+    id?: StringFilter<"GolfScore"> | string
+    userId?: StringFilter<"GolfScore"> | string
+    score?: IntFilter<"GolfScore"> | number
+    playedOn?: DateTimeFilter<"GolfScore"> | Date | string
+    createdAt?: DateTimeFilter<"GolfScore"> | Date | string
+    updatedAt?: DateTimeFilter<"GolfScore"> | Date | string
+  }
+
+  export type SubscriptionOrderUpsertWithoutUserInput = {
+    update: XOR<SubscriptionOrderUpdateWithoutUserInput, SubscriptionOrderUncheckedUpdateWithoutUserInput>
+    create: XOR<SubscriptionOrderCreateWithoutUserInput, SubscriptionOrderUncheckedCreateWithoutUserInput>
+    where?: SubscriptionOrderWhereInput
+  }
+
+  export type SubscriptionOrderUpdateToOneWithWhereWithoutUserInput = {
+    where?: SubscriptionOrderWhereInput
+    data: XOR<SubscriptionOrderUpdateWithoutUserInput, SubscriptionOrderUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SubscriptionOrderUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeSessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripePaymentIntentId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeClientSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentGateway?: EnumPaymentGatewayFieldUpdateOperationsInput | $Enums.PaymentGateway
+    amount?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    failReason?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionModel?: SubscriptionModelUpdateOneRequiredWithoutSubscriptionOrdersNestedInput
+    userCharities?: UserCharityUpdateOneWithoutSubscriptionNestedInput
+  }
+
+  export type SubscriptionOrderUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    subscriptionModelId?: StringFieldUpdateOperationsInput | string
+    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
+    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
+    stripeSessionId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripePaymentIntentId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeClientSecret?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeEventId?: NullableStringFieldUpdateOperationsInput | string | null
+    paymentGateway?: EnumPaymentGatewayFieldUpdateOperationsInput | $Enums.PaymentGateway
+    amount?: IntFieldUpdateOperationsInput | number
+    currency?: StringFieldUpdateOperationsInput | string
+    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+    failReason?: NullableStringFieldUpdateOperationsInput | string | null
+    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    userCharities?: UserCharityUncheckedUpdateOneWithoutSubscriptionNestedInput
+  }
+
+  export type UserCharityUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserCharityWhereUniqueInput
+    update: XOR<UserCharityUpdateWithoutUserInput, UserCharityUncheckedUpdateWithoutUserInput>
+    create: XOR<UserCharityCreateWithoutUserInput, UserCharityUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserCharityUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserCharityWhereUniqueInput
+    data: XOR<UserCharityUpdateWithoutUserInput, UserCharityUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserCharityUpdateManyWithWhereWithoutUserInput = {
+    where: UserCharityScalarWhereInput
+    data: XOR<UserCharityUpdateManyMutationInput, UserCharityUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserCharityScalarWhereInput = {
+    AND?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
+    OR?: UserCharityScalarWhereInput[]
+    NOT?: UserCharityScalarWhereInput | UserCharityScalarWhereInput[]
+    id?: StringFilter<"UserCharity"> | string
+    userId?: StringFilter<"UserCharity"> | string
+    charityId?: StringFilter<"UserCharity"> | string
+    subscriptionId?: StringFilter<"UserCharity"> | string
+    type?: EnumCharityContributionTypeFilter<"UserCharity"> | $Enums.CharityContributionType
+    percentage?: DecimalNullableFilter<"UserCharity"> | Decimal | DecimalJsLike | number | string | null
+    amount?: DecimalFilter<"UserCharity"> | Decimal | DecimalJsLike | number | string
+    currency?: StringFilter<"UserCharity"> | string
+    month?: IntNullableFilter<"UserCharity"> | number | null
+    year?: IntNullableFilter<"UserCharity"> | number | null
+    status?: EnumCharityStatusFilter<"UserCharity"> | $Enums.CharityStatus
+    paidAt?: DateTimeNullableFilter<"UserCharity"> | Date | string | null
+    createdAt?: DateTimeFilter<"UserCharity"> | Date | string
+    updatedAt?: DateTimeFilter<"UserCharity"> | Date | string
   }
 
   export type CharityImageCreateWithoutCharityInput = {
@@ -21162,6 +21111,41 @@ export namespace Prisma {
     userCharities?: UserCharityUncheckedUpdateManyWithoutCharityNestedInput
   }
 
+  export type CharityCreateWithoutUserCharitiesInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isFeatured?: boolean
+    isActive?: boolean
+    country?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: CharityImageCreateNestedManyWithoutCharityInput
+  }
+
+  export type CharityUncheckedCreateWithoutUserCharitiesInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    logoUrl?: string | null
+    websiteUrl?: string | null
+    isFeatured?: boolean
+    isActive?: boolean
+    country?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: CharityImageUncheckedCreateNestedManyWithoutCharityInput
+  }
+
+  export type CharityCreateOrConnectWithoutUserCharitiesInput = {
+    where: CharityWhereUniqueInput
+    create: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
+  }
+
   export type SubscriptionOrderCreateWithoutUserCharitiesInput = {
     id?: string
     periodStart: Date | string
@@ -21241,11 +21225,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderCreateNestedManyWithoutUserInput
     draws?: DrawCreateNestedManyWithoutAdminInput
-    winners?: WinnerCreateNestedManyWithoutUserInput
     participants?: ParticipantCreateNestedManyWithoutUserInput
+    winners?: WinnerCreateNestedManyWithoutUserInput
+    scores?: GolfScoreCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutUserCharitiesInput = {
@@ -21274,11 +21258,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput
     draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
+    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutUserCharitiesInput = {
@@ -21286,39 +21270,45 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutUserCharitiesInput, UserUncheckedCreateWithoutUserCharitiesInput>
   }
 
-  export type CharityCreateWithoutUserCharitiesInput = {
-    id?: string
-    name: string
-    slug: string
-    description: string
-    logoUrl?: string | null
-    websiteUrl?: string | null
-    isFeatured?: boolean
-    isActive?: boolean
-    country?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    images?: CharityImageCreateNestedManyWithoutCharityInput
-  }
-
-  export type CharityUncheckedCreateWithoutUserCharitiesInput = {
-    id?: string
-    name: string
-    slug: string
-    description: string
-    logoUrl?: string | null
-    websiteUrl?: string | null
-    isFeatured?: boolean
-    isActive?: boolean
-    country?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    images?: CharityImageUncheckedCreateNestedManyWithoutCharityInput
-  }
-
-  export type CharityCreateOrConnectWithoutUserCharitiesInput = {
-    where: CharityWhereUniqueInput
+  export type CharityUpsertWithoutUserCharitiesInput = {
+    update: XOR<CharityUpdateWithoutUserCharitiesInput, CharityUncheckedUpdateWithoutUserCharitiesInput>
     create: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
+    where?: CharityWhereInput
+  }
+
+  export type CharityUpdateToOneWithWhereWithoutUserCharitiesInput = {
+    where?: CharityWhereInput
+    data: XOR<CharityUpdateWithoutUserCharitiesInput, CharityUncheckedUpdateWithoutUserCharitiesInput>
+  }
+
+  export type CharityUpdateWithoutUserCharitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: CharityImageUpdateManyWithoutCharityNestedInput
+  }
+
+  export type CharityUncheckedUpdateWithoutUserCharitiesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: CharityImageUncheckedUpdateManyWithoutCharityNestedInput
   }
 
   export type SubscriptionOrderUpsertWithoutUserCharitiesInput = {
@@ -21417,11 +21407,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUpdateManyWithoutUserNestedInput
     draws?: DrawUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUpdateManyWithoutUserNestedInput
     participants?: ParticipantUpdateManyWithoutUserNestedInput
+    winners?: WinnerUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutUserCharitiesInput = {
@@ -21450,52 +21440,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput
     draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type CharityUpsertWithoutUserCharitiesInput = {
-    update: XOR<CharityUpdateWithoutUserCharitiesInput, CharityUncheckedUpdateWithoutUserCharitiesInput>
-    create: XOR<CharityCreateWithoutUserCharitiesInput, CharityUncheckedCreateWithoutUserCharitiesInput>
-    where?: CharityWhereInput
-  }
-
-  export type CharityUpdateToOneWithWhereWithoutUserCharitiesInput = {
-    where?: CharityWhereInput
-    data: XOR<CharityUpdateWithoutUserCharitiesInput, CharityUncheckedUpdateWithoutUserCharitiesInput>
-  }
-
-  export type CharityUpdateWithoutUserCharitiesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: CharityImageUpdateManyWithoutCharityNestedInput
-  }
-
-  export type CharityUncheckedUpdateWithoutUserCharitiesInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    logoUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    websiteUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    country?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: CharityImageUncheckedUpdateManyWithoutCharityNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutScoresInput = {
@@ -21524,11 +21473,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCharities?: UserCharityCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderCreateNestedManyWithoutUserInput
     draws?: DrawCreateNestedManyWithoutAdminInput
-    winners?: WinnerCreateNestedManyWithoutUserInput
     participants?: ParticipantCreateNestedManyWithoutUserInput
+    winners?: WinnerCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutScoresInput = {
@@ -21557,11 +21506,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput
     draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutScoresInput = {
@@ -21606,11 +21555,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUpdateManyWithoutUserNestedInput
     draws?: DrawUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUpdateManyWithoutUserNestedInput
     participants?: ParticipantUpdateManyWithoutUserNestedInput
+    winners?: WinnerUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutScoresInput = {
@@ -21639,11 +21588,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput
     draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type SubscriptionOrderCreateWithoutSubscriptionModelInput = {
@@ -21667,7 +21616,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutSubcriptionsInput
-    userCharities?: UserCharityCreateNestedManyWithoutSubscriptionInput
+    userCharities?: UserCharityCreateNestedOneWithoutSubscriptionInput
   }
 
   export type SubscriptionOrderUncheckedCreateWithoutSubscriptionModelInput = {
@@ -21691,7 +21640,7 @@ export namespace Prisma {
     userAgent?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutSubscriptionInput
+    userCharities?: UserCharityUncheckedCreateNestedOneWithoutSubscriptionInput
   }
 
   export type SubscriptionOrderCreateOrConnectWithoutSubscriptionModelInput = {
@@ -21718,6 +21667,33 @@ export namespace Prisma {
   export type SubscriptionOrderUpdateManyWithWhereWithoutSubscriptionModelInput = {
     where: SubscriptionOrderScalarWhereInput
     data: XOR<SubscriptionOrderUpdateManyMutationInput, SubscriptionOrderUncheckedUpdateManyWithoutSubscriptionModelInput>
+  }
+
+  export type SubscriptionOrderScalarWhereInput = {
+    AND?: SubscriptionOrderScalarWhereInput | SubscriptionOrderScalarWhereInput[]
+    OR?: SubscriptionOrderScalarWhereInput[]
+    NOT?: SubscriptionOrderScalarWhereInput | SubscriptionOrderScalarWhereInput[]
+    id?: StringFilter<"SubscriptionOrder"> | string
+    subscriptionModelId?: StringFilter<"SubscriptionOrder"> | string
+    userId?: StringFilter<"SubscriptionOrder"> | string
+    periodStart?: DateTimeFilter<"SubscriptionOrder"> | Date | string
+    periodEnd?: DateTimeFilter<"SubscriptionOrder"> | Date | string
+    stripeSessionId?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    stripePaymentIntentId?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    stripeCustomerId?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    stripeClientSecret?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    stripeEventId?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    paymentGateway?: EnumPaymentGatewayFilter<"SubscriptionOrder"> | $Enums.PaymentGateway
+    amount?: IntFilter<"SubscriptionOrder"> | number
+    currency?: StringFilter<"SubscriptionOrder"> | string
+    status?: EnumPaymentStatusFilter<"SubscriptionOrder"> | $Enums.PaymentStatus
+    failReason?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    completedAt?: DateTimeNullableFilter<"SubscriptionOrder"> | Date | string | null
+    cancelledAt?: DateTimeNullableFilter<"SubscriptionOrder"> | Date | string | null
+    ipAddress?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    userAgent?: StringNullableFilter<"SubscriptionOrder"> | string | null
+    createdAt?: DateTimeFilter<"SubscriptionOrder"> | Date | string
+    updatedAt?: DateTimeFilter<"SubscriptionOrder"> | Date | string
   }
 
   export type SubscriptionModelCreateWithoutSubscriptionOrdersInput = {
@@ -21773,11 +21749,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    draws?: DrawCreateNestedManyWithoutAdminInput
+    participants?: ParticipantCreateNestedManyWithoutUserInput
+    winners?: WinnerCreateNestedManyWithoutUserInput
     scores?: GolfScoreCreateNestedManyWithoutUserInput
     userCharities?: UserCharityCreateNestedManyWithoutUserInput
-    draws?: DrawCreateNestedManyWithoutAdminInput
-    winners?: WinnerCreateNestedManyWithoutUserInput
-    participants?: ParticipantCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSubcriptionsInput = {
@@ -21806,11 +21782,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
+    participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
     scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
     userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
-    draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
-    participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSubcriptionsInput = {
@@ -21830,8 +21806,8 @@ export namespace Prisma {
     paidAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutUserCharitiesInput
     charity: CharityCreateNestedOneWithoutUserCharitiesInput
+    user: UserCreateNestedOneWithoutUserCharitiesInput
   }
 
   export type UserCharityUncheckedCreateWithoutSubscriptionInput = {
@@ -21853,11 +21829,6 @@ export namespace Prisma {
   export type UserCharityCreateOrConnectWithoutSubscriptionInput = {
     where: UserCharityWhereUniqueInput
     create: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput>
-  }
-
-  export type UserCharityCreateManySubscriptionInputEnvelope = {
-    data: UserCharityCreateManySubscriptionInput | UserCharityCreateManySubscriptionInput[]
-    skipDuplicates?: boolean
   }
 
   export type SubscriptionModelUpsertWithoutSubscriptionOrdersInput = {
@@ -21930,11 +21901,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    draws?: DrawUpdateManyWithoutAdminNestedInput
+    participants?: ParticipantUpdateManyWithoutUserNestedInput
+    winners?: WinnerUpdateManyWithoutUserNestedInput
     scores?: GolfScoreUpdateManyWithoutUserNestedInput
     userCharities?: UserCharityUpdateManyWithoutUserNestedInput
-    draws?: DrawUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUpdateManyWithoutUserNestedInput
-    participants?: ParticipantUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSubcriptionsInput = {
@@ -21963,27 +21934,54 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
+    participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
     scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
     userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
-    draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
-    participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type UserCharityUpsertWithWhereUniqueWithoutSubscriptionInput = {
-    where: UserCharityWhereUniqueInput
+  export type UserCharityUpsertWithoutSubscriptionInput = {
     update: XOR<UserCharityUpdateWithoutSubscriptionInput, UserCharityUncheckedUpdateWithoutSubscriptionInput>
     create: XOR<UserCharityCreateWithoutSubscriptionInput, UserCharityUncheckedCreateWithoutSubscriptionInput>
+    where?: UserCharityWhereInput
   }
 
-  export type UserCharityUpdateWithWhereUniqueWithoutSubscriptionInput = {
-    where: UserCharityWhereUniqueInput
+  export type UserCharityUpdateToOneWithWhereWithoutSubscriptionInput = {
+    where?: UserCharityWhereInput
     data: XOR<UserCharityUpdateWithoutSubscriptionInput, UserCharityUncheckedUpdateWithoutSubscriptionInput>
   }
 
-  export type UserCharityUpdateManyWithWhereWithoutSubscriptionInput = {
-    where: UserCharityScalarWhereInput
-    data: XOR<UserCharityUpdateManyMutationInput, UserCharityUncheckedUpdateManyWithoutSubscriptionInput>
+  export type UserCharityUpdateWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
+    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    month?: NullableIntFieldUpdateOperationsInput | number | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    charity?: CharityUpdateOneRequiredWithoutUserCharitiesNestedInput
+    user?: UserUpdateOneRequiredWithoutUserCharitiesNestedInput
+  }
+
+  export type UserCharityUncheckedUpdateWithoutSubscriptionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    charityId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
+    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    month?: NullableIntFieldUpdateOperationsInput | number | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateWithoutDrawsInput = {
@@ -22012,11 +22010,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderCreateNestedManyWithoutUserInput
-    winners?: WinnerCreateNestedManyWithoutUserInput
     participants?: ParticipantCreateNestedManyWithoutUserInput
+    winners?: WinnerCreateNestedManyWithoutUserInput
+    scores?: GolfScoreCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutDrawsInput = {
@@ -22045,11 +22043,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
+    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutDrawsInput = {
@@ -22074,8 +22072,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin: UserCreateNestedOneWithoutDrawsInput
     rolledOverFrom?: DrawCreateNestedOneWithoutRolledOverToInput
-    winners?: WinnerCreateNestedManyWithoutDrawInput
     participants?: ParticipantCreateNestedManyWithoutDrawInput
+    winners?: WinnerCreateNestedManyWithoutDrawInput
   }
 
   export type DrawUncheckedCreateWithoutRolledOverToInput = {
@@ -22095,8 +22093,8 @@ export namespace Prisma {
     rolledOverFromId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutDrawInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
   }
 
   export type DrawCreateOrConnectWithoutRolledOverToInput = {
@@ -22121,8 +22119,8 @@ export namespace Prisma {
     updatedAt?: Date | string
     admin: UserCreateNestedOneWithoutDrawsInput
     rolledOverTo?: DrawCreateNestedManyWithoutRolledOverFromInput
-    winners?: WinnerCreateNestedManyWithoutDrawInput
     participants?: ParticipantCreateNestedManyWithoutDrawInput
+    winners?: WinnerCreateNestedManyWithoutDrawInput
   }
 
   export type DrawUncheckedCreateWithoutRolledOverFromInput = {
@@ -22142,8 +22140,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     rolledOverTo?: DrawUncheckedCreateNestedManyWithoutRolledOverFromInput
-    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutDrawInput
+    winners?: WinnerUncheckedCreateNestedManyWithoutDrawInput
   }
 
   export type DrawCreateOrConnectWithoutRolledOverFromInput = {
@@ -22153,6 +22151,32 @@ export namespace Prisma {
 
   export type DrawCreateManyRolledOverFromInputEnvelope = {
     data: DrawCreateManyRolledOverFromInput | DrawCreateManyRolledOverFromInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ParticipantCreateWithoutDrawInput = {
+    id?: string
+    score: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutParticipantsInput
+  }
+
+  export type ParticipantUncheckedCreateWithoutDrawInput = {
+    id?: string
+    userId: string
+    score: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ParticipantCreateOrConnectWithoutDrawInput = {
+    where: ParticipantWhereUniqueInput
+    create: XOR<ParticipantCreateWithoutDrawInput, ParticipantUncheckedCreateWithoutDrawInput>
+  }
+
+  export type ParticipantCreateManyDrawInputEnvelope = {
+    data: ParticipantCreateManyDrawInput | ParticipantCreateManyDrawInput[]
     skipDuplicates?: boolean
   }
 
@@ -22198,32 +22222,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type ParticipantCreateWithoutDrawInput = {
-    id?: string
-    score: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    user: UserCreateNestedOneWithoutParticipantsInput
-  }
-
-  export type ParticipantUncheckedCreateWithoutDrawInput = {
-    id?: string
-    userId: string
-    score: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ParticipantCreateOrConnectWithoutDrawInput = {
-    where: ParticipantWhereUniqueInput
-    create: XOR<ParticipantCreateWithoutDrawInput, ParticipantUncheckedCreateWithoutDrawInput>
-  }
-
-  export type ParticipantCreateManyDrawInputEnvelope = {
-    data: ParticipantCreateManyDrawInput | ParticipantCreateManyDrawInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UserUpsertWithoutDrawsInput = {
     update: XOR<UserUpdateWithoutDrawsInput, UserUncheckedUpdateWithoutDrawsInput>
     create: XOR<UserCreateWithoutDrawsInput, UserUncheckedCreateWithoutDrawsInput>
@@ -22261,11 +22259,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUpdateManyWithoutUserNestedInput
-    winners?: WinnerUpdateManyWithoutUserNestedInput
     participants?: ParticipantUpdateManyWithoutUserNestedInput
+    winners?: WinnerUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDrawsInput = {
@@ -22294,11 +22292,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type DrawUpsertWithoutRolledOverToInput = {
@@ -22329,8 +22327,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: UserUpdateOneRequiredWithoutDrawsNestedInput
     rolledOverFrom?: DrawUpdateOneWithoutRolledOverToNestedInput
-    winners?: WinnerUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUncheckedUpdateWithoutRolledOverToInput = {
@@ -22350,8 +22348,8 @@ export namespace Prisma {
     rolledOverFromId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUpsertWithWhereUniqueWithoutRolledOverFromInput = {
@@ -22370,22 +22368,6 @@ export namespace Prisma {
     data: XOR<DrawUpdateManyMutationInput, DrawUncheckedUpdateManyWithoutRolledOverFromInput>
   }
 
-  export type WinnerUpsertWithWhereUniqueWithoutDrawInput = {
-    where: WinnerWhereUniqueInput
-    update: XOR<WinnerUpdateWithoutDrawInput, WinnerUncheckedUpdateWithoutDrawInput>
-    create: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput>
-  }
-
-  export type WinnerUpdateWithWhereUniqueWithoutDrawInput = {
-    where: WinnerWhereUniqueInput
-    data: XOR<WinnerUpdateWithoutDrawInput, WinnerUncheckedUpdateWithoutDrawInput>
-  }
-
-  export type WinnerUpdateManyWithWhereWithoutDrawInput = {
-    where: WinnerScalarWhereInput
-    data: XOR<WinnerUpdateManyMutationInput, WinnerUncheckedUpdateManyWithoutDrawInput>
-  }
-
   export type ParticipantUpsertWithWhereUniqueWithoutDrawInput = {
     where: ParticipantWhereUniqueInput
     update: XOR<ParticipantUpdateWithoutDrawInput, ParticipantUncheckedUpdateWithoutDrawInput>
@@ -22400,6 +22382,22 @@ export namespace Prisma {
   export type ParticipantUpdateManyWithWhereWithoutDrawInput = {
     where: ParticipantScalarWhereInput
     data: XOR<ParticipantUpdateManyMutationInput, ParticipantUncheckedUpdateManyWithoutDrawInput>
+  }
+
+  export type WinnerUpsertWithWhereUniqueWithoutDrawInput = {
+    where: WinnerWhereUniqueInput
+    update: XOR<WinnerUpdateWithoutDrawInput, WinnerUncheckedUpdateWithoutDrawInput>
+    create: XOR<WinnerCreateWithoutDrawInput, WinnerUncheckedCreateWithoutDrawInput>
+  }
+
+  export type WinnerUpdateWithWhereUniqueWithoutDrawInput = {
+    where: WinnerWhereUniqueInput
+    data: XOR<WinnerUpdateWithoutDrawInput, WinnerUncheckedUpdateWithoutDrawInput>
+  }
+
+  export type WinnerUpdateManyWithWhereWithoutDrawInput = {
+    where: WinnerScalarWhereInput
+    data: XOR<WinnerUpdateManyMutationInput, WinnerUncheckedUpdateManyWithoutDrawInput>
   }
 
   export type DrawCreateWithoutWinnersInput = {
@@ -22475,11 +22473,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderCreateNestedManyWithoutUserInput
     draws?: DrawCreateNestedManyWithoutAdminInput
     participants?: ParticipantCreateNestedManyWithoutUserInput
+    scores?: GolfScoreCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutWinnersInput = {
@@ -22508,11 +22506,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput
     draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
     participants?: ParticipantUncheckedCreateNestedManyWithoutUserInput
+    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutWinnersInput = {
@@ -22610,11 +22608,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUpdateManyWithoutUserNestedInput
     draws?: DrawUpdateManyWithoutAdminNestedInput
     participants?: ParticipantUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutWinnersInput = {
@@ -22643,11 +22641,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput
     draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type DrawCreateWithoutParticipantsInput = {
@@ -22723,11 +22721,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderCreateNestedManyWithoutUserInput
     draws?: DrawCreateNestedManyWithoutAdminInput
     winners?: WinnerCreateNestedManyWithoutUserInput
+    scores?: GolfScoreCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutParticipantsInput = {
@@ -22756,11 +22754,11 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
-    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
-    subcriptions?: SubscriptionOrderUncheckedCreateNestedManyWithoutUserInput
     draws?: DrawUncheckedCreateNestedManyWithoutAdminInput
     winners?: WinnerUncheckedCreateNestedManyWithoutUserInput
+    scores?: GolfScoreUncheckedCreateNestedManyWithoutUserInput
+    subcriptions?: SubscriptionOrderUncheckedCreateNestedOneWithoutUserInput
+    userCharities?: UserCharityUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutParticipantsInput = {
@@ -22858,11 +22856,11 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUpdateManyWithoutUserNestedInput
     draws?: DrawUpdateManyWithoutAdminNestedInput
     winners?: WinnerUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutParticipantsInput = {
@@ -22891,11 +22889,53 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
-    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
-    subcriptions?: SubscriptionOrderUncheckedUpdateManyWithoutUserNestedInput
     draws?: DrawUncheckedUpdateManyWithoutAdminNestedInput
     winners?: WinnerUncheckedUpdateManyWithoutUserNestedInput
+    scores?: GolfScoreUncheckedUpdateManyWithoutUserNestedInput
+    subcriptions?: SubscriptionOrderUncheckedUpdateOneWithoutUserNestedInput
+    userCharities?: UserCharityUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type DrawCreateManyAdminInput = {
+    id?: string
+    prizePool: number
+    currency?: string
+    entryStartDate: Date | string
+    lastEntryDate: Date | string
+    resultDate: Date | string
+    drawNumber?: string | null
+    status?: $Enums.DrawStatus
+    fiveMatchPct?: number
+    fourMatchPct?: number
+    threeMatchPct?: number
+    jackpotRolledOver?: boolean
+    rolledOverFromId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ParticipantCreateManyUserInput = {
+    id?: string
+    drawId: string
+    score: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type WinnerCreateManyUserInput = {
+    id?: string
+    drawId: string
+    winnerType: $Enums.WinnerType
+    winnerScore: string
+    verificationStatus?: $Enums.VerificationStatus
+    paymentStatus?: $Enums.WinnerPaymentStatus
+    proofImage?: string | null
+    prizeAmount?: number | null
+    adminNotes?: string | null
+    verifiedAt?: Date | string | null
+    paidAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type GolfScoreCreateManyUserInput = {
@@ -22922,214 +22962,6 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type SubscriptionOrderCreateManyUserInput = {
-    id?: string
-    subscriptionModelId: string
-    periodStart: Date | string
-    periodEnd: Date | string
-    stripeSessionId?: string | null
-    stripePaymentIntentId?: string | null
-    stripeCustomerId?: string | null
-    stripeClientSecret?: string | null
-    stripeEventId?: string | null
-    paymentGateway?: $Enums.PaymentGateway
-    amount: number
-    currency?: string
-    status?: $Enums.PaymentStatus
-    failReason?: string | null
-    completedAt?: Date | string | null
-    cancelledAt?: Date | string | null
-    ipAddress?: string | null
-    userAgent?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type DrawCreateManyAdminInput = {
-    id?: string
-    prizePool: number
-    currency?: string
-    entryStartDate: Date | string
-    lastEntryDate: Date | string
-    resultDate: Date | string
-    drawNumber?: string | null
-    status?: $Enums.DrawStatus
-    fiveMatchPct?: number
-    fourMatchPct?: number
-    threeMatchPct?: number
-    jackpotRolledOver?: boolean
-    rolledOverFromId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type WinnerCreateManyUserInput = {
-    id?: string
-    drawId: string
-    winnerType: $Enums.WinnerType
-    winnerScore: string
-    verificationStatus?: $Enums.VerificationStatus
-    paymentStatus?: $Enums.WinnerPaymentStatus
-    proofImage?: string | null
-    prizeAmount?: number | null
-    adminNotes?: string | null
-    verifiedAt?: Date | string | null
-    paidAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ParticipantCreateManyUserInput = {
-    id?: string
-    drawId: string
-    score: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type GolfScoreUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    score?: IntFieldUpdateOperationsInput | number
-    playedOn?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type GolfScoreUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    score?: IntFieldUpdateOperationsInput | number
-    playedOn?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type GolfScoreUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    score?: IntFieldUpdateOperationsInput | number
-    playedOn?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserCharityUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
-    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    month?: NullableIntFieldUpdateOperationsInput | number | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subscription?: SubscriptionOrderUpdateOneRequiredWithoutUserCharitiesNestedInput
-    charity?: CharityUpdateOneRequiredWithoutUserCharitiesNestedInput
-  }
-
-  export type UserCharityUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    charityId?: StringFieldUpdateOperationsInput | string
-    subscriptionId?: StringFieldUpdateOperationsInput | string
-    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
-    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    month?: NullableIntFieldUpdateOperationsInput | number | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserCharityUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    charityId?: StringFieldUpdateOperationsInput | string
-    subscriptionId?: StringFieldUpdateOperationsInput | string
-    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
-    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    month?: NullableIntFieldUpdateOperationsInput | number | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SubscriptionOrderUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
-    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
-    stripeSessionId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripePaymentIntentId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeClientSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeEventId?: NullableStringFieldUpdateOperationsInput | string | null
-    paymentGateway?: EnumPaymentGatewayFieldUpdateOperationsInput | $Enums.PaymentGateway
-    amount?: IntFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-    failReason?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    subscriptionModel?: SubscriptionModelUpdateOneRequiredWithoutSubscriptionOrdersNestedInput
-    userCharities?: UserCharityUpdateManyWithoutSubscriptionNestedInput
-  }
-
-  export type SubscriptionOrderUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    subscriptionModelId?: StringFieldUpdateOperationsInput | string
-    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
-    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
-    stripeSessionId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripePaymentIntentId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeClientSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeEventId?: NullableStringFieldUpdateOperationsInput | string | null
-    paymentGateway?: EnumPaymentGatewayFieldUpdateOperationsInput | $Enums.PaymentGateway
-    amount?: IntFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-    failReason?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCharities?: UserCharityUncheckedUpdateManyWithoutSubscriptionNestedInput
-  }
-
-  export type SubscriptionOrderUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    subscriptionModelId?: StringFieldUpdateOperationsInput | string
-    periodStart?: DateTimeFieldUpdateOperationsInput | Date | string
-    periodEnd?: DateTimeFieldUpdateOperationsInput | Date | string
-    stripeSessionId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripePaymentIntentId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeClientSecret?: NullableStringFieldUpdateOperationsInput | string | null
-    stripeEventId?: NullableStringFieldUpdateOperationsInput | string | null
-    paymentGateway?: EnumPaymentGatewayFieldUpdateOperationsInput | $Enums.PaymentGateway
-    amount?: IntFieldUpdateOperationsInput | number
-    currency?: StringFieldUpdateOperationsInput | string
-    status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
-    failReason?: NullableStringFieldUpdateOperationsInput | string | null
-    completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cancelledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
-    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type DrawUpdateWithoutAdminInput = {
     id?: StringFieldUpdateOperationsInput | string
     prizePool?: IntFieldUpdateOperationsInput | number
@@ -23147,8 +22979,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolledOverFrom?: DrawUpdateOneWithoutRolledOverToNestedInput
     rolledOverTo?: DrawUpdateManyWithoutRolledOverFromNestedInput
-    winners?: WinnerUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUncheckedUpdateWithoutAdminInput = {
@@ -23168,8 +23000,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolledOverTo?: DrawUncheckedUpdateManyWithoutRolledOverFromNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUncheckedUpdateManyWithoutAdminInput = {
@@ -23186,6 +23018,30 @@ export namespace Prisma {
     threeMatchPct?: IntFieldUpdateOperationsInput | number
     jackpotRolledOver?: BoolFieldUpdateOperationsInput | boolean
     rolledOverFromId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParticipantUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    draw?: DrawUpdateOneRequiredWithoutParticipantsNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    drawId?: StringFieldUpdateOperationsInput | string
+    score?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParticipantUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    drawId?: StringFieldUpdateOperationsInput | string
+    score?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23238,26 +23094,74 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ParticipantUpdateWithoutUserInput = {
+  export type GolfScoreUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    score?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    draw?: DrawUpdateOneRequiredWithoutParticipantsNestedInput
-  }
-
-  export type ParticipantUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    drawId?: StringFieldUpdateOperationsInput | string
-    score?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    playedOn?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ParticipantUncheckedUpdateManyWithoutUserInput = {
+  export type GolfScoreUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    drawId?: StringFieldUpdateOperationsInput | string
-    score?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    playedOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GolfScoreUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    playedOn?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCharityUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
+    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    month?: NullableIntFieldUpdateOperationsInput | number | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    charity?: CharityUpdateOneRequiredWithoutUserCharitiesNestedInput
+    subscription?: SubscriptionOrderUpdateOneRequiredWithoutUserCharitiesNestedInput
+  }
+
+  export type UserCharityUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    charityId?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
+    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    month?: NullableIntFieldUpdateOperationsInput | number | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCharityUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    charityId?: StringFieldUpdateOperationsInput | string
+    subscriptionId?: StringFieldUpdateOperationsInput | string
+    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
+    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    currency?: StringFieldUpdateOperationsInput | string
+    month?: NullableIntFieldUpdateOperationsInput | number | null
+    year?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
+    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23402,7 +23306,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSubcriptionsNestedInput
-    userCharities?: UserCharityUpdateManyWithoutSubscriptionNestedInput
+    userCharities?: UserCharityUpdateOneWithoutSubscriptionNestedInput
   }
 
   export type SubscriptionOrderUncheckedUpdateWithoutSubscriptionModelInput = {
@@ -23426,7 +23330,7 @@ export namespace Prisma {
     userAgent?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    userCharities?: UserCharityUncheckedUpdateManyWithoutSubscriptionNestedInput
+    userCharities?: UserCharityUncheckedUpdateOneWithoutSubscriptionNestedInput
   }
 
   export type SubscriptionOrderUncheckedUpdateManyWithoutSubscriptionModelInput = {
@@ -23452,70 +23356,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type UserCharityCreateManySubscriptionInput = {
-    id?: string
-    userId: string
-    charityId: string
-    type: $Enums.CharityContributionType
-    percentage?: Decimal | DecimalJsLike | number | string | null
-    amount: Decimal | DecimalJsLike | number | string
-    currency?: string
-    month?: number | null
-    year?: number | null
-    status?: $Enums.CharityStatus
-    paidAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type UserCharityUpdateWithoutSubscriptionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
-    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    month?: NullableIntFieldUpdateOperationsInput | number | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutUserCharitiesNestedInput
-    charity?: CharityUpdateOneRequiredWithoutUserCharitiesNestedInput
-  }
-
-  export type UserCharityUncheckedUpdateWithoutSubscriptionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    charityId?: StringFieldUpdateOperationsInput | string
-    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
-    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    month?: NullableIntFieldUpdateOperationsInput | number | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type UserCharityUncheckedUpdateManyWithoutSubscriptionInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    charityId?: StringFieldUpdateOperationsInput | string
-    type?: EnumCharityContributionTypeFieldUpdateOperationsInput | $Enums.CharityContributionType
-    percentage?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    amount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    currency?: StringFieldUpdateOperationsInput | string
-    month?: NullableIntFieldUpdateOperationsInput | number | null
-    year?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: EnumCharityStatusFieldUpdateOperationsInput | $Enums.CharityStatus
-    paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type DrawCreateManyRolledOverFromInput = {
     id?: string
     adminId: string
@@ -23534,6 +23374,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type ParticipantCreateManyDrawInput = {
+    id?: string
+    userId: string
+    score: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type WinnerCreateManyDrawInput = {
     id?: string
     userId: string
@@ -23546,14 +23394,6 @@ export namespace Prisma {
     adminNotes?: string | null
     verifiedAt?: Date | string | null
     paidAt?: Date | string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ParticipantCreateManyDrawInput = {
-    id?: string
-    userId: string
-    score: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -23575,8 +23415,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: UserUpdateOneRequiredWithoutDrawsNestedInput
     rolledOverTo?: DrawUpdateManyWithoutRolledOverFromNestedInput
-    winners?: WinnerUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUncheckedUpdateWithoutRolledOverFromInput = {
@@ -23596,8 +23436,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     rolledOverTo?: DrawUncheckedUpdateManyWithoutRolledOverFromNestedInput
-    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
     participants?: ParticipantUncheckedUpdateManyWithoutDrawNestedInput
+    winners?: WinnerUncheckedUpdateManyWithoutDrawNestedInput
   }
 
   export type DrawUncheckedUpdateManyWithoutRolledOverFromInput = {
@@ -23614,6 +23454,30 @@ export namespace Prisma {
     fourMatchPct?: IntFieldUpdateOperationsInput | number
     threeMatchPct?: IntFieldUpdateOperationsInput | number
     jackpotRolledOver?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParticipantUpdateWithoutDrawInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    score?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutParticipantsNestedInput
+  }
+
+  export type ParticipantUncheckedUpdateWithoutDrawInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    score?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ParticipantUncheckedUpdateManyWithoutDrawInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    score?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -23662,30 +23526,6 @@ export namespace Prisma {
     adminNotes?: NullableStringFieldUpdateOperationsInput | string | null
     verifiedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paidAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ParticipantUpdateWithoutDrawInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    score?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutParticipantsNestedInput
-  }
-
-  export type ParticipantUncheckedUpdateWithoutDrawInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    score?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ParticipantUncheckedUpdateManyWithoutDrawInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    userId?: StringFieldUpdateOperationsInput | string
-    score?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

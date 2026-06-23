@@ -8,6 +8,7 @@ import { generateAccessToken, generateRefreshToken } from '../../utils/generateT
 import { User } from '../../generated/prisma'
 
 export const getsafeUser=(user:User)=>{
+    console.log(user.id )
 return {
                 email:user.email,
                 profilePicture:user.profilePicture,
